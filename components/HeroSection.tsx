@@ -1,0 +1,240 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import SplitType from "split-type";
+
+const HeroSection = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  
+  useEffect(() => {
+    if (!heroRef.current || !headlineRef.current) return;
+    
+    // Split text for character animation
+    const headlineText = new SplitType(headlineRef.current, { types: 'chars' });
+    const chars = headlineText.chars;
+    
+    if (!chars) return;
+    
+    // GSAP timeline for hero animations
+    const tl = gsap.timeline();
+    
+    // Animate headline characters
+    tl.fromTo(chars, 
+      { 
+        y: 100, 
+        opacity: 0 
+      },
+      { 
+        y: 0, 
+        opacity: 1, 
+        stagger: 0.02, 
+        duration: 0.8, 
+        ease: "power3.out" 
+      }
+    );
+    
+    // Create AI typing effect for subheadline
+    const typewriter = document.querySelector('.typewriter-text');
+    if (typewriter) {
+      const text = typewriter.textContent || '';
+      typewriter.textContent = '';
+      
+      let i = 0;
+      const typeSpeed = 30; // ms per character
+      
+      const typeEffect = () => {
+        if (i < text.length) {
+          typewriter.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeEffect, typeSpeed);
+        }
+      };
+      
+      // Start typing effect after headline animation
+      tl.call(typeEffect);
+    }
+    
+    // Animate decorative elements
+    gsap.fromTo('.hero-decoration', 
+      { scale: 0, opacity: 0 },
+      { 
+        scale: 1, 
+        opacity: 1, 
+        stagger: 0.1, 
+        duration: 1, 
+        ease: "elastic.out(1, 0.5)",
+        delay: 0.5
+      }
+    );
+    
+    // Particle effect
+    const createParticles = () => {
+      const particleContainer = document.querySelector('.particle-container');
+      if (!particleContainer) return;
+      
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'absolute w-1 h-1 rounded-full bg-cyan-400 opacity-0';
+        
+        // Random position around the headline
+        const x = Math.random() * 800 - 400;
+        const y = Math.random() * 400 - 200;
+        
+        gsap.set(particle, { x, y });
+        particleContainer.appendChild(particle);
+        
+        // Animate particle
+        gsap.to(particle, {
+          x: x + (Math.random() * 200 - 100),
+          y: y + (Math.random() * 200 - 100),
+          opacity: Math.random() * 0.5,
+          duration: 2 + Math.random() * 2,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: Math.random() * 2
+        });
+      }
+    };
+    
+    createParticles();
+    
+    return () => {
+      tl.kill();
+      gsap.killTweensOf('.hero-decoration');
+      gsap.killTweensOf('.particle-container > div');
+    };
+  }, []);
+  
+  return (
+    <section 
+      ref={heroRef}
+      id="hero" 
+      className="relative min-h-screen flex flex-col items-center justify-center px-8 pt-20"
+    >
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="hero-decoration absolute top-1/4 left-1/4 w-32 h-32 border border-cyan-500/20 rounded-full"></div>
+        <div className="hero-decoration absolute bottom-1/3 right-1/4 w-40 h-40 border border-purple-500/20 rounded-full"></div>
+        <div className="hero-decoration absolute top-1/3 right-1/3 w-24 h-24 border border-cyan-500/20 rounded-full"></div>
+        <div className="particle-container absolute inset-0 flex items-center justify-center"></div>
+      </div>
+      
+      <div className="max-w-5xl mx-auto text-center relative z-10">
+        <motion.div
+          className="mb-4 inline-block"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <span className="px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
+            INNOVATION REDEFINED
+          </span>
+        </motion.div>
+        
+        <h1 
+          ref={headlineRef}
+          className="text-5xl sm:text-7xl font-bold tracking-tight mb-6"
+        >
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            InnoSphere Labs
+          </span>
+        </h1>
+        
+        <motion.h2 
+          className="text-2xl sm:text-3xl font-light text-gray-300 mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          Where Innovation Meets Collective Genius
+        </motion.h2>
+        
+        <motion.h3 
+          className="text-3xl sm:text-4xl font-bold text-white mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          Revolutionizing Enterprise Software with 
+          <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent ml-2">
+            AI, Blockchain, & Custom Software
+          </span>
+        </motion.h3>
+        
+        <motion.p 
+          className="typewriter-text text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto mb-12 border-r-2 border-cyan-400 pr-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.5 }}
+        >
+          Empower your business with advanced AI-driven automation, robust blockchain security, and tailor-made software solutions designed to boost efficiency, ensure compliance, and drive growth.
+        </motion.p>
+        
+        <div className="flex gap-6 items-center justify-center flex-col sm:flex-row mt-10">
+          <motion.a
+            href="#services"
+            className="relative overflow-hidden rounded-full border border-solid border-transparent flex items-center justify-center bg-gradient-to-r from-cyan-500 to-purple-600 text-white gap-2 font-medium text-base sm:text-lg h-14 sm:h-16 px-8 sm:px-10 w-full sm:w-auto max-w-xs"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span className="relative z-10">Explore Solutions</span>
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500"
+              initial={{ x: '100%' }}
+              whileHover={{ x: 0 }}
+              transition={{ duration: 0.4 }}
+            />
+          </motion.a>
+          
+          <motion.a
+            href="#why-us"
+            className="rounded-full border border-solid border-cyan-500/30 flex items-center justify-center hover:bg-cyan-950/30 transition-colors font-medium text-base sm:text-lg h-14 sm:h-16 px-8 sm:px-10 w-full sm:w-auto max-w-xs group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 2.2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span>Why Choose Us</span>
+            <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </motion.a>
+        </div>
+      </div>
+      
+      {/* Scroll indicator */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5, duration: 1 }}
+      >
+        <span className="text-sm text-gray-400 mb-2">Discover More</span>
+        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center p-1">
+          <motion.div 
+            className="w-1 h-2 bg-gradient-to-b from-cyan-400 to-purple-500 rounded-full"
+            animate={{ 
+              y: [0, 12, 0],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ 
+              duration: 1.5, 
+              repeat: Infinity,
+              ease: "easeInOut" 
+            }}
+          />
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default HeroSection; 
