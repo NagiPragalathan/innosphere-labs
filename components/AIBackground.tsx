@@ -56,17 +56,17 @@ const AIBackground = () => {
         ctx.fill();
       }
       
-      update() {
+      update(canvas: HTMLCanvasElement | null) {
         // Move node
         this.x += this.velocity.x;
         this.y += this.velocity.y;
         
         // Bounce off edges
-        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+        if (this.x + this.radius > canvas!.width || this.x - this.radius < 0) {
           this.velocity.x = -this.velocity.x;
         }
         
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+        if (this.y + this.radius > canvas!.height || this.y - this.radius < 0) {
           this.velocity.y = -this.velocity.y;
         }
         
@@ -148,7 +148,7 @@ const AIBackground = () => {
       nodes.forEach(node => node.connect());
       
       // Then draw and update nodes
-      nodes.forEach(node => node.update());
+      nodes.forEach(node => node.update(canvas));
       
       animationId = requestAnimationFrame(animate);
     };

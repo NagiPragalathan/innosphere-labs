@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   
   const navItems = [
     { name: "Solutions", href: "#services" },
@@ -12,8 +15,50 @@ const Header = () => {
     { name: "Contact", href: "#contact" }
   ];
   
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    
+    // Add smooth scrolling for anchor links
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      
+      if (anchor && anchor.hash && anchor.hash.startsWith('#')) {
+        e.preventDefault();
+        
+        // Close mobile menu if open
+        if (isMobileMenuOpen) {
+          setIsMobileMenuOpen(false);
+        }
+        
+        const targetElement = document.querySelector(anchor.hash);
+        if (targetElement) {
+          // Smooth scroll to the target
+          window.scrollTo({
+            top: targetElement.getBoundingClientRect().top + window.scrollY - 100, // Offset for header
+            behavior: 'smooth'
+          });
+          
+          // Update URL without causing page jump
+          window.history.pushState(null, '', anchor.hash);
+        }
+      }
+    };
+    
+    document.addEventListener('click', handleAnchorClick);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener('click', handleAnchorClick);
+    };
+  }, [isMobileMenuOpen]);
+  
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-4 bg-black/80 backdrop-blur-md">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="text-xl font-bold">
           <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
