@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -123,6 +123,121 @@ const extractMainHeadings = (markdown) => {
   }
   
   return headings;
+};
+
+// Add this component for the animated code background
+const CodeBackground = ({ color }) => {
+  const canvasRef = useRef(null);
+  
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width = canvas.offsetWidth;
+    const height = canvas.height = canvas.offsetHeight;
+    
+    // Generate random code-like characters
+    const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン{}[]()<>/\\|=+-*&^%$#@!~';
+    const columns = Math.floor(width / 20);
+    const drops = Array(columns).fill(1);
+    
+    // Parse the color to get RGB values for the gradient
+    const getColorValues = (colorStr) => {
+      if (colorStr.includes('from-')) {
+        const fromColor = colorStr.match(/from-([a-z]+-\d+)/)[1];
+        const toColor = colorStr.match(/to-([a-z]+-\d+)/)[1];
+        return { from: fromColor, to: toColor };
+      }
+      return { from: 'cyan-500', to: 'purple-600' };
+    };
+    
+    const colors = getColorValues(color);
+    
+    // Create gradient based on the service color
+    const getGradientColor = (y) => {
+      const ratio = y / height;
+      const fromColor = getTailwindColor(colors.from);
+      const toColor = getTailwindColor(colors.to);
+      return interpolateColor(fromColor, toColor, ratio);
+    };
+    
+    function getTailwindColor(colorName) {
+      const colorMap = {
+        'blue-400': '#60a5fa',
+        'blue-500': '#3b82f6',
+        'blue-600': '#2563eb',
+        'indigo-600': '#4f46e5',
+        'cyan-400': '#22d3ee',
+        'cyan-500': '#06b6d4',
+        'cyan-600': '#0891b2',
+        'purple-500': '#a855f7',
+        'purple-600': '#9333ea',
+        'green-400': '#4ade80',
+        'green-500': '#22c55e',
+        'teal-600': '#0d9488',
+        'pink-500': '#ec4899',
+        'pink-600': '#db2777',
+        'yellow-400': '#facc15',
+        'orange-600': '#ea580c',
+        'red-400': '#f87171',
+        'amber-500': '#f59e0b',
+      };
+      return colorMap[colorName] || '#3b82f6';
+    }
+    
+    function interpolateColor(color1, color2, factor) {
+      const r1 = parseInt(color1.slice(1, 3), 16);
+      const g1 = parseInt(color1.slice(3, 5), 16);
+      const b1 = parseInt(color1.slice(5, 7), 16);
+      
+      const r2 = parseInt(color2.slice(1, 3), 16);
+      const g2 = parseInt(color2.slice(3, 5), 16);
+      const b2 = parseInt(color2.slice(5, 7), 16);
+      
+      const r = Math.round(r1 + factor * (r2 - r1));
+      const g = Math.round(g1 + factor * (g2 - g1));
+      const b = Math.round(b1 + factor * (b2 - b1));
+      
+      return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    }
+    
+    const draw = () => {
+      // Semi-transparent black to create trail effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, width, height);
+      
+      for (let i = 0; i < drops.length; i++) {
+        // Get a random character
+        const text = characters[Math.floor(Math.random() * characters.length)];
+        
+        // Get color based on position
+        ctx.fillStyle = getGradientColor(drops[i] * 20);
+        
+        // Draw the character
+        ctx.font = '15px monospace';
+        ctx.fillText(text, i * 20, drops[i] * 20);
+        
+        // Reset if it's at the bottom or randomly
+        if (drops[i] * 20 > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        
+        // Move the drop down
+        drops[i]++;
+      }
+    };
+    
+    const interval = setInterval(draw, 50);
+    
+    return () => clearInterval(interval);
+  }, [color]);
+  
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="absolute inset-0 w-full h-full opacity-20"
+      style={{ width: '100%', height: '100%' }}
+    />
+  );
 };
 
 export default function Services() {
@@ -467,10 +582,13 @@ export default function Services() {
           </div>
         </section>
         
-        {/* Services Grid Section with Card Style and Hover Effects */}
+        {/* Services Grid Section with Tech Vibe and Animated Code Background */}
         <section className="py-16 px-4 sm:px-8 relative bg-gray-900/30">
           <div className="absolute top-0 right-0 w-1/3 h-1/2 opacity-30 pointer-events-none z-0 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-1/4 h-1/3 opacity-20 pointer-events-none z-0 bg-gradient-to-tr from-cyan-600/20 to-transparent rounded-full blur-3xl"></div>
+          
+          {/* Tech circuit board pattern overlay */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] opacity-5"></div>
           
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.div 
@@ -480,13 +598,20 @@ export default function Services() {
               variants={sectionVariants}
               className="mb-16 text-center sm:text-left"
             >
+              <div className="inline-block mb-4 px-4 py-1.5 bg-gray-800/70 backdrop-blur-sm rounded-full border border-gray-700 text-sm text-cyan-400">
+                <span className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
+                  Innovative Solutions
+                </span>
+              </div>
+              
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
                   Our Services
                 </span>
               </h2>
               <p className="text-lg text-gray-300 max-w-3xl mx-auto sm:mx-0">
-                Comprehensive solutions tailored to meet your business needs and drive innovation
+                Comprehensive solutions tailored to meet your business needs and drive innovation in the digital era
               </p>
             </motion.div>
             
@@ -499,40 +624,48 @@ export default function Services() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={cardVariants}
-                  className="relative overflow-hidden group rounded-2xl h-[320px] border border-gray-800 hover:border-gray-700 transition-all duration-300 shadow-lg"
+                  className="relative overflow-hidden group rounded-2xl h-[340px] sm:h-[320px] border border-gray-800 hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-900/10"
                 >
-                  {/* Background gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/80 z-10"></div>
-                  
-                  {/* Background color/image */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-80 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110 group-hover:-rotate-3`}>
-                    {/* Optional: Add a pattern or texture overlay */}
-                    <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                  {/* Animated code background */}
+                  <div className="absolute inset-0 opacity-30 group-hover:opacity-40 transition-opacity duration-500">
+                    <CodeBackground color={service.color} />
                   </div>
+                  
+                  {/* Background gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/70 to-black/90 z-10"></div>
+                  
+                  {/* Tech pattern overlay */}
+                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/tech-pattern.png')] opacity-5 z-10"></div>
+                  
+                  {/* Glowing accent */}
+                  <div className={`absolute -inset-1 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 group-hover:duration-500 z-0`}></div>
                   
                   {/* Content */}
                   <div className="relative p-8 h-full flex flex-col z-20">
                     <div className="mb-4">
-                      <div className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl bg-white/10 backdrop-blur-sm shadow-lg">
+                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-3xl bg-gradient-to-br ${service.color} shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
                         {service.icon}
                       </div>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">{service.title}</h3>
                     <p className="text-sm text-white/80 mb-2">{service.description}</p>
                     
                     <div className="mt-auto">
                       <button 
                         onClick={() => setActiveService(service.id)}
-                        className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white transition-all duration-200 bg-black/40 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-black/60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                        className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white transition-all duration-200 bg-black/40 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-black/60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 group"
                       >
-                        Learn More
+                        <span>Learn More</span>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                         </svg>
-                        <span className="absolute inset-0" aria-hidden="true"></span>
                       </button>
                     </div>
+                    
+                    {/* Tech decorative elements */}
+                    <div className="absolute top-4 right-4 w-20 h-20 border border-gray-700/30 rounded-full opacity-20"></div>
+                    <div className="absolute bottom-12 right-4 w-12 h-12 border border-gray-700/30 rounded-lg opacity-10 rotate-12"></div>
                   </div>
                 </motion.div>
               ))}
