@@ -10,6 +10,7 @@ import WhyUsSection from "@/components/WhyUsSection";
 import Footer from "@/components/Footer";
 import AICursor from "@/components/AICursor";
 import ScrollIndicator from "@/components/ScrollIndicator";
+import Contact from "@/components/Contact";
 import Link from "next/link";
 
 // Animation variants for sections
@@ -126,6 +127,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
+        <Contact />
         <Footer />
       </motion.footer>
     </div>
