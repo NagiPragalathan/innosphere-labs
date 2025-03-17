@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ScrollIndicator from "@/components/ScrollIndicator";
 import ThemeRegistry from "../ThemeRegistry";
 import { Metadata } from "next";
+import AICursor from "@/components/AICursor";
 
 // Add required metadata export
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function ProductsLayout({
   return (
     <>
       <Header />
+      <AICursor />
       <ScrollIndicator />
       <main>{children}</main>
       <Footer />
