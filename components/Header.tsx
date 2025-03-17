@@ -5,14 +5,18 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   
-  const navItems = [
-    { name: "Solutions", href: "#services" },
-    { name: "About", href: "#intro" },
-    { name: "Why Us", href: "#why-us" },
-    { name: "Contact", href: "#contact" }
+  // Menu items exactly as provided
+  const menuItems = [
+    { name: "Home Page", href: "/" },
+    { name: "Services", href: "#services" },
+    { name: "Products", href: "#products" },
+    { name: "Industries", href: "#industries" },
+    { name: "Blog", href: "/blog" },
+    { name: "Careers", href: "/careers" },
+    { name: "Contact Us", href: "/contact" }
   ];
   
   useEffect(() => {
@@ -31,8 +35,8 @@ const Header = () => {
         e.preventDefault();
         
         // Close mobile menu if open
-        if (isMobileMenuOpen) {
-          setIsMobileMenuOpen(false);
+        if (isMenuOpen) {
+          setIsMenuOpen(false);
         }
         
         const targetElement = document.querySelector(anchor.hash);
@@ -55,38 +59,42 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener('click', handleAnchorClick);
     };
-  }, [isMobileMenuOpen]);
+  }, [isMenuOpen]);
   
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md py-3' : 'bg-transparent py-5'}`}>
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="text-xl font-bold">
-          <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-            InnoSphere Labs
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+        <Link href="/" className="flex items-center">
+          <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+            InnoSphere
           </span>
-        </div>
+        </Link>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-          {navItems.map((item, i) => (
-            <a
-              key={i}
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex items-center space-x-8">
+          {menuItems.map((item, index) => (
+            <Link 
+              key={index}
               href={item.href}
-              className="text-gray-300 hover:text-cyan-400 transition-colors py-2"
+              className="text-gray-300 hover:text-white transition-colors relative group"
             >
               {item.name}
-            </a>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           ))}
           
-          <button className="ml-4 px-4 lg:px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium hover:opacity-90 transition-opacity">
+          <Link 
+            href="/contact"
+            className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-5 py-2 rounded-full hover:opacity-90 transition-opacity"
+          >
             Get Started
-          </button>
+          </Link>
         </nav>
         
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        <button 
+          className="md:hidden text-gray-300 focus:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -95,7 +103,7 @@ const Header = () => {
             viewBox="0 0 24 24" 
             stroke="currentColor"
           >
-            {isMobileMenuOpen ? (
+            {isMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -105,25 +113,50 @@ const Header = () => {
       </div>
       
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md">
-          <div className="px-4 py-4 flex flex-col space-y-4">
-            {navItems.map((item, i) => (
-              <a
-                key={i}
-                href={item.href}
-                className="text-gray-300 hover:text-cyan-400 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
+              {menuItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Link 
+                    href={item.href}
+                    className="text-gray-300 hover:text-white transition-colors block py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+              
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: menuItems.length * 0.1 }}
               >
-                {item.name}
-              </a>
-            ))}
-            <button className="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium">
-              Get Started
-            </button>
-          </div>
-        </div>
-      )}
+                <Link 
+                  href="/contact"
+                  className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-5 py-2 rounded-full hover:opacity-90 transition-opacity inline-block mt-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Get Started
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
