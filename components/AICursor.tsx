@@ -87,7 +87,7 @@ const AICursor = () => {
     <>
       {/* Main cursor ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-cyan-400 z-50 pointer-events-none"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-cyan-400 z-50 pointer-events-none z-100"
         variants={cursorVariants}
         animate={cursorState}
         transition={{
@@ -100,7 +100,7 @@ const AICursor = () => {
       
       {/* Inner cursor dot */}
       <motion.div 
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-cyan-400 z-50 pointer-events-none"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-cyan-400 z-50 pointer-events-none z-100"
         animate={{
           x: position.x - 4,
           y: position.y - 4,
@@ -119,7 +119,7 @@ const AICursor = () => {
       {Array.from({ length: 6 }).map((_, i) => (
         <motion.div
           key={i}
-          className="fixed top-0 left-0 w-1 h-1 rounded-full bg-cyan-400 z-50 pointer-events-none"
+          className="fixed top-0 left-0 w-1 h-1 rounded-full bg-cyan-400 z-50 pointer-events-none z-100"
           animate={{
             x: position.x + Math.cos(i * (Math.PI / 3)) * (linkHovered ? 30 : 20) - 2,
             y: position.y + Math.sin(i * (Math.PI / 3)) * (linkHovered ? 30 : 20) - 2,
