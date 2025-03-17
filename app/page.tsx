@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import ImageHero from "@/components/ImageHero";
 import IntroSection from "@/components/IntroSection";
 import ServicesSection from "@/components/ServicesSection";
 import WhyUsSection from "@/components/WhyUsSection";
@@ -72,8 +73,8 @@ export default function Home() {
       <ScrollIndicator />
       
       <main className="overflow-x-hidden">
-        <HeroSection />
-        
+        {/* <HeroSection /> */}
+        <ImageHero />
         <motion.div
           initial="hidden"
           whileInView="visible"
