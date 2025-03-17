@@ -10,6 +10,7 @@ import WhyUsSection from "@/components/WhyUsSection";
 import Footer from "@/components/Footer";
 import AICursor from "@/components/AICursor";
 import ScrollIndicator from "@/components/ScrollIndicator";
+import Link from "next/link";
 
 // Animation variants for sections
 const sectionVariants = {
@@ -98,6 +99,25 @@ export default function Home() {
         >
           <WhyUsSection />
         </motion.div>
+        
+        <section className="py-20 px-4 sm:px-8">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                Explore Our Products
+              </span>
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-10">
+              Discover our comprehensive suite of innovative solutions designed to transform your business
+            </p>
+            <Link 
+              href="/products"
+              className="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+            >
+              View All Products
+            </Link>
+          </div>
+        </section>
       </main>
       
       <motion.footer
