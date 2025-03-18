@@ -13,20 +13,20 @@ const theme = createTheme({
 });
 
 // This implementation is from the Material UI Next.js example
-export default function ThemeRegistry({ children }) {
+export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
   const [{ cache, flush }] = useState(() => {
     const cache = createCache({
       key: 'mui',
     });
     cache.compat = true;
     const prevInsert = cache.insert;
-    let inserted = [];
-    cache.insert = (...args) => {
+    let inserted: string[] = [];
+    cache.insert = (...args: any[]) => {
       const serialized = args[1];
       if (cache.inserted[serialized.name] === undefined) {
         inserted.push(serialized.name);
       }
-      return prevInsert(...args);
+      return prevInsert(...args as [any, any, any, any]);
     };
     const flush = () => {
       const prevInserted = inserted;

@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from 'react-markdown';
 import productDocs from "./documentation/documents";
+import type { Components } from 'react-markdown';
+import type { ReactNode } from 'react';
 
 // Product icons
 // Short descriptions for each product
@@ -23,53 +25,59 @@ const productDescriptions = {
   "Freshworks Compliance Monitoring Plugin": "Compliance monitoring for Freshworks suite",
 };
 
+// Define a more specific type for the component props
+interface MarkdownComponentProps {
+  node?: any;
+  children?: ReactNode;
+  [key: string]: any;
+}
 
 // Custom components for ReactMarkdown with improved styling
-const MarkdownComponents = {
-  h1: ({node, ...props}) => (
+const MarkdownComponents: Components = {
+  h1: ({node, ...props}: MarkdownComponentProps) => (
     <h1 id={props.children?.toString().toLowerCase().replace(/\s+/g, '-')} className="text-3xl font-bold text-white mb-6 mt-8 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent scroll-mt-20" {...props} />
   ),
-  h2: ({node, ...props}) => (
+  h2: ({node, ...props}: MarkdownComponentProps) => (
     <h2 id={props.children?.toString().toLowerCase().replace(/\s+/g, '-')} className="text-2xl font-bold text-white mb-5 mt-8 flex items-center scroll-mt-20">
       <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-blue-500 to-cyan-400 mr-3 rounded-full"></span>
       <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{props.children}</span>
     </h2>
   ),
-  h3: ({node, ...props}) => (
+  h3: ({node, ...props}: MarkdownComponentProps) => (
     <h3 id={props.children?.toString().toLowerCase().replace(/\s+/g, '-')} className="text-xl font-semibold text-white mb-4 mt-6 text-blue-300 scroll-mt-20" {...props} />
   ),
-  p: ({node, ...props}) => (
+  p: ({node, ...props}: MarkdownComponentProps) => (
     <p className="text-gray-300 mb-4 leading-relaxed text-base" {...props} />
   ),
-  ul: ({node, ...props}) => (
+  ul: ({node, ...props}: MarkdownComponentProps) => (
     <ul className="list-none pl-0 mb-6 space-y-3 text-gray-300" {...props} />
   ),
-  li: ({node, ...props}) => (
+  li: ({node, ...props}: MarkdownComponentProps) => (
     <li className="flex items-start mb-2">
       <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mt-1 mr-3">
         <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
         </svg>
-    </div>
+      </div>
       <span>{props.children}</span>
     </li>
   ),
-  code: ({node, inline, ...props}) => 
+  code: ({node, inline, ...props}: MarkdownComponentProps & { inline?: boolean }) => 
     inline ? (
       <code className="bg-black/40 px-1.5 py-0.5 rounded text-cyan-400 font-mono" {...props} />
     ) : (
       <code className="block bg-black/40 p-4 rounded-lg my-4 text-cyan-400 font-mono overflow-x-auto" {...props} />
     ),
-  pre: ({node, ...props}) => (
+  pre: ({node, ...props}: MarkdownComponentProps) => (
     <pre className="bg-black/40 p-5 rounded-xl my-6 border border-gray-700/30 overflow-x-auto shadow-lg" {...props} />
   ),
-  strong: ({node, ...props}) => (
+  strong: ({node, ...props}: MarkdownComponentProps) => (
     <strong className="font-semibold text-blue-300" {...props} />
   ),
-  em: ({node, ...props}) => (
+  em: ({node, ...props}: MarkdownComponentProps) => (
     <em className="text-cyan-300 font-italic" {...props} />
   ),
-  blockquote: ({node, ...props}) => (
+  blockquote: ({node, ...props}: MarkdownComponentProps) => (
     <blockquote className="border-l-4 border-blue-500 pl-4 py-2 my-4 bg-blue-900/20 rounded-r-lg" {...props} />
   ),
 };
@@ -96,7 +104,7 @@ const ProductPage = () => {
     };
   }, []);
 
-  const openModal = (product) => {
+  const openModal = (product: string) => {
     setSelectedProduct(product);
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
@@ -162,7 +170,7 @@ const ProductPage = () => {
   ];
 
   // Function to extract only main headings (h1 and h2) from markdown content
-  const extractMainHeadings = (markdown) => {
+  const extractMainHeadings = (markdown: string) => {
     const headingRegex = /^(#{1,2})\s+(.+)$/gm;
     const headings = [];
     let match;
@@ -391,7 +399,7 @@ const ProductPage = () => {
                         {product}
                       </h3>
                       <p className="text-gray-300 mb-8 min-h-[60px]">
-                        {productDescriptions[product]}
+                        {productDescriptions[product as keyof typeof productDescriptions]}
                       </p>
                       <button
                         onClick={() => openModal(product)}
@@ -499,7 +507,7 @@ const ProductPage = () => {
                     {selectedProduct}
                   </h2>
                   <p className="text-white/90 text-lg max-w-3xl">
-                    {productDescriptions[selectedProduct]}
+                    {productDescriptions[selectedProduct as keyof typeof productDescriptions]}
                   </p>
                 </div>
               </div>
@@ -516,7 +524,7 @@ const ProductPage = () => {
                       Table of Contents
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {extractMainHeadings(productDocs[selectedProduct]).map((heading, index) => (
+                      {extractMainHeadings(productDocs[selectedProduct as keyof typeof productDocs]).map((heading, index) => (
                         <a 
                           key={index}
                           href={`#${heading.id}`}
@@ -541,7 +549,7 @@ const ProductPage = () => {
                     {/* Main content with styled markdown */}
                     <div className="bg-gray-800/30 p-6 rounded-xl backdrop-blur-sm border border-gray-700/30 shadow-lg">
                       <ReactMarkdown components={MarkdownComponents}>
-                        {productDocs[selectedProduct]}
+                        {productDocs[selectedProduct as keyof typeof productDocs]}
                       </ReactMarkdown>
                     </div>
                   </div>

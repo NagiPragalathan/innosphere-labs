@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -58,27 +58,34 @@ const modalVariants = {
   }
 };
 
+interface MarkdownComponentProps {
+  node?: any;
+  children?: ReactNode;
+  inline?: boolean;
+  [key: string]: any;
+}
+
 // Custom components for ReactMarkdown with improved styling
 const MarkdownComponents = {
-  h1: ({node, ...props}) => (
+  h1: ({node, ...props}: MarkdownComponentProps) => (
     <h1 id={props.children?.toString().toLowerCase().replace(/\s+/g, '-')} className="text-3xl font-bold text-white mb-6 mt-8 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent scroll-mt-20" {...props} />
   ),
-  h2: ({node, ...props}) => (
+  h2: ({node, ...props}: MarkdownComponentProps) => (
     <h2 id={props.children?.toString().toLowerCase().replace(/\s+/g, '-')} className="text-2xl font-bold text-white mb-5 mt-8 flex items-center scroll-mt-20">
       <span className="inline-block w-1.5 h-6 bg-gradient-to-b from-cyan-500 to-purple-600 mr-3 rounded-full"></span>
       <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">{props.children}</span>
     </h2>
   ),
-  h3: ({node, ...props}) => (
+  h3: ({node, ...props}: MarkdownComponentProps) => (
     <h3 id={props.children?.toString().toLowerCase().replace(/\s+/g, '-')} className="text-xl font-semibold text-white mb-4 mt-6 text-cyan-300 scroll-mt-20" {...props} />
   ),
-  p: ({node, ...props}) => (
+  p: ({node, ...props}: MarkdownComponentProps) => (
     <p className="text-gray-300 mb-4 leading-relaxed text-base" {...props} />
   ),
-  ul: ({node, ...props}) => (
+  ul: ({node, ...props}: MarkdownComponentProps) => (
     <ul className="list-none pl-0 mb-6 space-y-3 text-gray-300" {...props} />
   ),
-  li: ({node, ...props}) => (
+  li: ({node, ...props}: MarkdownComponentProps) => (
     <li className="flex items-start mb-2">
       <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center mt-1 mr-3">
         <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,28 +95,28 @@ const MarkdownComponents = {
       <span>{props.children}</span>
     </li>
   ),
-  code: ({node, inline, ...props}) => 
+  code: ({node, inline, ...props}: MarkdownComponentProps & { inline?: boolean }) => 
     inline ? (
       <code className="bg-black/40 px-1.5 py-0.5 rounded text-cyan-400 font-mono" {...props} />
     ) : (
       <code className="block bg-black/40 p-4 rounded-lg my-4 text-cyan-400 font-mono overflow-x-auto" {...props} />
     ),
-  pre: ({node, ...props}) => (
+  pre: ({node, ...props}: MarkdownComponentProps) => (
     <pre className="bg-black/40 p-5 rounded-xl my-6 border border-gray-700/30 overflow-x-auto shadow-lg" {...props} />
   ),
-  strong: ({node, ...props}) => (
+  strong: ({node, ...props}: MarkdownComponentProps) => (
     <strong className="font-semibold text-cyan-300" {...props} />
   ),
-  em: ({node, ...props}) => (
+  em: ({node, ...props}: MarkdownComponentProps) => (
     <em className="text-purple-300 font-italic" {...props} />
   ),
-  blockquote: ({node, ...props}) => (
+  blockquote: ({node, ...props}: MarkdownComponentProps) => (
     <blockquote className="border-l-4 border-cyan-500 pl-4 py-2 my-4 bg-cyan-900/20 rounded-r-lg" {...props} />
   ),
 };
 
 // Function to extract main headings for table of contents
-const extractMainHeadings = (markdown) => {
+const extractMainHeadings = (markdown: string) => {
   const headingRegex = /^(#{1,2})\s+(.+)$/gm;
   const headings = [];
   let match;
@@ -126,18 +133,22 @@ const extractMainHeadings = (markdown) => {
 };
 
 // Update the CodeBackground component with explicit canvas styling
-const CodeBackground = ({ color }) => {
-  const canvasRef = useRef(null);
+const CodeBackground = ({ color }: { color: string }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
     
     // Set canvas size based on parent element
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
-      canvas.width = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
+      if (parent) {
+        canvas.width = parent.offsetWidth;
+        canvas.height = parent.offsetHeight;
+      }
     };
 
     // Initial resize
@@ -152,11 +163,14 @@ const CodeBackground = ({ color }) => {
     const drops = Array(columns).fill(1);
     
     // Parse the color to get RGB values for the gradient
-    const getColorValues = (colorStr) => {
+    const getColorValues = (colorStr: string) => {
       if (colorStr.includes('from-')) {
-        const fromColor = colorStr.match(/from-([a-z]+-\d+)/)[1];
-        const toColor = colorStr.match(/to-([a-z]+-\d+)/)[1];
-        return { from: fromColor, to: toColor };
+        const fromMatch = colorStr.match(/from-([a-z]+-\d+)/);
+        const toMatch = colorStr.match(/to-([a-z]+-\d+)/);
+        return { 
+          from: fromMatch ? fromMatch[1] : 'cyan-500',
+          to: toMatch ? toMatch[1] : 'purple-600'
+        };
       }
       return { from: 'cyan-500', to: 'purple-600' };
     };
@@ -164,14 +178,14 @@ const CodeBackground = ({ color }) => {
     const colors = getColorValues(color);
     
     // Create gradient based on the service color
-    const getGradientColor = (y) => {
+    const getGradientColor = (y: number) => {
       const ratio = y / canvas.height;
       const fromColor = getTailwindColor(colors.from);
       const toColor = getTailwindColor(colors.to);
       return interpolateColor(fromColor, toColor, ratio);
     };
     
-    function getTailwindColor(colorName) {
+    function getTailwindColor(colorName: string) {
       const colorMap = {
         'blue-400': '#60a5fa',
         'blue-500': '#3b82f6',
@@ -192,10 +206,10 @@ const CodeBackground = ({ color }) => {
         'red-400': '#f87171',
         'amber-500': '#f59e0b',
       };
-      return colorMap[colorName] || '#3b82f6';
+      return colorMap[colorName as keyof typeof colorMap] || '#3b82f6';
     }
     
-    function interpolateColor(color1, color2, factor) {
+    function interpolateColor(color1: string, color2: string, factor: number) {
       const r1 = parseInt(color1.slice(1, 3), 16);
       const g1 = parseInt(color1.slice(3, 5), 16);
       const b1 = parseInt(color1.slice(5, 7), 16);
