@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,10 +65,20 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
-        <Link href="/" className="flex items-center">
-          <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-            InnoSphere
-          </span>
+        <Link href="/" className="flex items-center group">
+          <div className="relative h-[60px] w-[200px] transition-all duration-300 group-hover:scale-105">
+            <Image 
+              src="/logo.png" 
+              alt="InnoSphere Logo" 
+              fill
+              priority
+              className="object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] brightness-125"
+              sizes="(max-width: 768px) 150px, 200px"
+              style={{
+                filter: `drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))`
+              }}
+            />
+          </div>
         </Link>
         
         {/* Desktop Menu */}

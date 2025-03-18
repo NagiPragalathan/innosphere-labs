@@ -236,7 +236,7 @@ const ImageHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              Revolutionizing Enterprise Software with 
+              Transforming Enterprise Solutions with 
               <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent ml-2">
                 AI, Blockchain, & Custom Software
               </span>
@@ -249,7 +249,7 @@ const ImageHero = () => {
               transition={{ duration: 0.5, delay: 1.5 }}
             >
               <p className="typewriter-text text-lg sm:text-xl text-gray-300">
-                Empower your business with advanced AI-driven automation, robust blockchain security, and tailor-made software solutions designed to boost efficiency, ensure compliance, and drive growth.
+              Empower your business with Advanced AI-driven automation, robust blockchain security, and tailor-made software solutions.
               </p>
             </motion.div>
             
