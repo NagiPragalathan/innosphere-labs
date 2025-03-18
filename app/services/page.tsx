@@ -125,19 +125,30 @@ const extractMainHeadings = (markdown) => {
   return headings;
 };
 
-// Add this component for the animated code background
+// Update the CodeBackground component with explicit canvas styling
 const CodeBackground = ({ color }) => {
   const canvasRef = useRef(null);
   
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    const width = canvas.width = canvas.offsetWidth;
-    const height = canvas.height = canvas.offsetHeight;
     
-    // Generate random code-like characters
+    // Set canvas size based on parent element
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+    };
+
+    // Initial resize
+    resizeCanvas();
+
+    // Add resize listener
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Rest of your existing canvas code...
     const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン{}[]()<>/\\|=+-*&^%$#@!~';
-    const columns = Math.floor(width / 20);
+    const columns = Math.floor(canvas.width / 20);
     const drops = Array(columns).fill(1);
     
     // Parse the color to get RGB values for the gradient
@@ -154,7 +165,7 @@ const CodeBackground = ({ color }) => {
     
     // Create gradient based on the service color
     const getGradientColor = (y) => {
-      const ratio = y / height;
+      const ratio = y / canvas.height;
       const fromColor = getTailwindColor(colors.from);
       const toColor = getTailwindColor(colors.to);
       return interpolateColor(fromColor, toColor, ratio);
@@ -203,7 +214,7 @@ const CodeBackground = ({ color }) => {
     const draw = () => {
       // Semi-transparent black to create trail effect
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, width, height);
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       for (let i = 0; i < drops.length; i++) {
         // Get a random character
@@ -217,7 +228,7 @@ const CodeBackground = ({ color }) => {
         ctx.fillText(text, i * 20, drops[i] * 20);
         
         // Reset if it's at the bottom or randomly
-        if (drops[i] * 20 > height && Math.random() > 0.975) {
+        if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
         
@@ -228,14 +239,21 @@ const CodeBackground = ({ color }) => {
     
     const interval = setInterval(draw, 50);
     
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', resizeCanvas);
+    };
   }, [color]);
   
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 w-full h-full opacity-20"
-      style={{ width: '100%', height: '100%' }}
+      className="absolute inset-0" 
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'block'
+      }}
     />
   );
 };
