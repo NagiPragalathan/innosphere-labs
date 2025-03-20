@@ -11,13 +11,12 @@ const Header = () => {
   
   // Menu items exactly as provided
   const menuItems = [
-    { name: "Home Page", href: "/" },
-    { name: "Services", href: "#services" },
-    { name: "Products", href: "#products" },
-    { name: "Industries", href: "#industries" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Products", href: "/product" },
+    { name: "Industries", href: "/industry" },
     { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact Us", href: "/contact" }
+    { name: "Contact", href: "/#contact" }
   ];
   
   useEffect(() => {

@@ -4,9 +4,12 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   const footerLinks = {
-    solutions: ["AI Integration", "Blockchain", "Custom Software", "Cloud Services", "Data Analytics"],
-    company: ["About", "Team", "Careers", "Contact", "Blog"],
-    resources: ["Documentation", "Case Studies", "Whitepapers", "API", "Support"]
+    solutions: ["AI Integration", "Blockchain", "Plugins", "Cloud Services", "Data Analytics"],
+    solutions_id: ["ai", "blockchain", "plugins", "cloud", "ai"],
+    company: ["About", "Services", "Products", "Industries", "Blog"],
+    company_id: ["/", "/services", "/product", "/industry", "/blog"],
+    resources: ["AI services", "Blockchain services", "Plugins services", "UI/UX services", "Staff Augmentation services"],
+    resources_id: ["/services#services", "/services#services", "/services#services", "/services#services", "/services#services"]
   };
   
   return (
@@ -44,7 +47,7 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.solutions.map((link, i) => (
                 <li key={i}>
-                  <a href="#" className="text-sm sm:text-base text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href={"/product#"+footerLinks.solutions_id[i]} className="text-sm sm:text-base text-gray-400 hover:text-cyan-400 transition-colors">
                     {link}
                   </a>
                 </li>
@@ -60,7 +63,7 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.company.map((link, i) => (
                 <li key={i}>
-                  <a href="#" className="text-sm sm:text-base text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href={footerLinks.company_id[i]} className="text-sm sm:text-base text-gray-400 hover:text-cyan-400 transition-colors">
                     {link}
                   </a>
                 </li>
@@ -76,7 +79,7 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.resources.map((link, i) => (
                 <li key={i}>
-                  <a href="#" className="text-sm sm:text-base text-gray-400 hover:text-cyan-400 transition-colors">
+                  <a href={footerLinks.resources_id[i]} className="text-sm sm:text-base text-gray-400 hover:text-cyan-400 transition-colors">
                     {link}
                   </a>
                 </li>

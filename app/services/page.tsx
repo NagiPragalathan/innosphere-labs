@@ -604,7 +604,7 @@ export default function Services() {
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
                 <Link 
-                  href="/contact"
+                  href="/#contact"
                   className="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
                 >
                   Get Started
@@ -622,7 +622,7 @@ export default function Services() {
           {/* Tech circuit board pattern overlay */}
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] opacity-5"></div>
           
-          <div className="max-w-7xl mx-auto relative z-10">
+          <div className="max-w-7xl mx-auto relative z-10" id="services">
             <motion.div 
               initial="hidden"
               whileInView="visible"

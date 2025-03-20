@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact: React.FC = () => {
     return (
-        <section className="relative py-12 overflow-hidden bg-black sm:py-16 lg:py-20 xl:py-24">
+        <section className="relative py-12 overflow-hidden bg-black sm:py-16 lg:py-20 xl:py-24" id='contact'>
             <div className="absolute top-0 left-0 -translate-x-48 -translate-y-36">
 
             </div>
