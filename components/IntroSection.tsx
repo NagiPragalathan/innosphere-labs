@@ -34,7 +34,7 @@ const IntroSection = () => {
           </h2>
           
           <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            At InnoSphere, we don't just innovate—we orchestrate ecosystems of possibility. By bridging visionary ideas with collaborative execution, we turn raw potential into scalable breakthroughs. Our creators, technologists, and industry disruptors exists to fuel your next leap—not just through tools, but through transformative partnerships.
+            At InnoSphere, we don't just innovate we orchestrate ecosystems of possibility. By bridging visionary ideas with collaborative execution, we turn raw potential into scalable breakthroughs. Our creators, technologists, and industry disruptors exists to fuel your next leap not just through tools, but through transformative partnerships.
           </p>
         </motion.div>
       </div>

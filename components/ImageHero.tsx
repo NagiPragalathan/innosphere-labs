@@ -208,7 +208,7 @@ const ImageHero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <span className="px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
-                INNOVATION REDEFINED
+                Where Innovation Meets Collective Genius
               </span>
             </motion.div>
             
@@ -216,19 +216,7 @@ const ImageHero = () => {
               ref={headlineRef}
               className="text-5xl sm:text-7xl font-bold tracking-tight mb-6"
             >
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                InnoSphere Labs
-              </span>
             </h1>
-            
-            <motion.h2 
-              className="text-2xl sm:text-3xl font-light text-gray-300 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-            >
-              Where Innovation Meets Collective Genius
-            </motion.h2>
             
             <motion.h3 
               className="text-3xl sm:text-4xl font-bold text-white mb-6"

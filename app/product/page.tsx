@@ -384,25 +384,25 @@ const ProductPage = () => {
                 {category.products.map((product, idx) => (
                   <motion.div 
                     key={idx}
-                    className={`${category.bgColor} backdrop-blur-sm border ${category.borderColor} rounded-2xl overflow-hidden transition-all duration-300`}
+                    className={`${category.bgColor} backdrop-blur-sm border ${category.borderColor} rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                     whileHover={{ y: -5, boxShadow: `0 20px 30px -10px rgba(0,0,0,0.3)` }}
+                    onClick={() => openModal(product)}
                   >
                     <div className="p-8">
                       <div className="text-4xl mb-6 bg-white/5 w-16 h-16 rounded-2xl flex items-center justify-center">
                         {category.icon}
                       </div>
-                      <h3 className={`text-xl font-semibold mb-3 ${category.textColor}`}>
+                      <h3 className={`text-xl font-semibold mb-3 ${category.textColor} hover:opacity-80 transition-opacity`}>
                         {product}
                       </h3>
                       <p className="text-gray-300 mb-8 min-h-[60px]">
                         {productDescriptions[product as keyof typeof productDescriptions]}
                       </p>
                       <button
-                        onClick={() => openModal(product)}
                         className={`bg-gradient-to-r ${category.color} text-white px-6 py-3 rounded-xl text-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-2`}
                       >
                         <span>Learn More</span>
@@ -464,14 +464,14 @@ const ProductPage = () => {
         {modalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={closeModal}>
             <motion.div 
-              className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden bg-gray-900/90 backdrop-blur-md rounded-2xl border border-gray-800"
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-[90%] h-[90vh] overflow-hidden bg-gray-900/90 backdrop-blur-md rounded-xl border border-gray-800"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Improved Close button with better visibility */}
+              {/* Close button */}
               <button 
                 onClick={closeModal}
                 className="absolute top-4 right-4 text-white z-20 bg-gray-800/90 p-2.5 rounded-full transition-all hover:bg-gray-700 shadow-lg border border-gray-700"
@@ -482,17 +482,14 @@ const ProductPage = () => {
                 </svg>
               </button>
               
-              {/* Enhanced Header with updated blob image */}
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-8 rounded-t-2xl relative overflow-hidden">
+              {/* Reduced Header */}
+              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 h-16 relative overflow-hidden flex items-center">
                 <div className="absolute inset-0 opacity-20">
-                  <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-white/10"></div>
+                  <div className="absolute -top-10 -right-10 w-20 h-20 rounded-full bg-white/10"></div>
                   <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/20 to-transparent"></div>
-                  {/* Added geometric patterns */}
-                  <div className="absolute top-10 left-10 w-20 h-20 border border-white/10 rounded-lg rotate-45"></div>
-                  <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full"></div>
-                  
-                  {/* Added pink gradient blob image to modal header */}
-                  <div className="absolute -top-10 -right-10 w-48 h-48 mix-blend-screen opacity-40">
+                  <div className="absolute top-5 left-5 w-10 h-10 border border-white/10 rounded-lg rotate-45"></div>
+                  <div className="absolute bottom-5 right-5 w-16 h-16 border border-white/10 rounded-full"></div>
+                  <div className="absolute -top-5 -right-5 w-24 h-24 mix-blend-screen opacity-40">
                     <img 
                       src="https://images.rawpixel.com/image_png_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LWVsZW1lbnQtcGgtMDE2YS5wbmc.png" 
                       alt="Pink gradient fluid blob" 
@@ -501,19 +498,21 @@ const ProductPage = () => {
                   </div>
                 </div>
                 
-                <div className="relative z-10">
-                  <div className="inline-block text-5xl mb-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm shadow-xl">📄</div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                    {selectedProduct}
-                  </h2>
-                  <p className="text-white/90 text-lg max-w-3xl">
-                    {productDescriptions[selectedProduct as keyof typeof productDescriptions]}
-                  </p>
+                <div className="relative z-10 flex items-center px-4 space-x-4">
+                  <div className="text-2xl bg-white/10 p-1.5 rounded-lg backdrop-blur-sm shadow-xl">📄</div>
+                  <div>
+                    <h2 className="text-lg font-bold text-white">
+                      {selectedProduct}
+                    </h2>
+                    <p className="text-white/90 text-sm max-w-3xl">
+                      {productDescriptions[selectedProduct as keyof typeof productDescriptions]}
+                    </p>
+                  </div>
                 </div>
               </div>
               
-              {/* Improved Documentation Content */}
-              <div className="overflow-y-auto" style={{ maxHeight: 'calc(90vh - 250px)' }}>
+              {/* Documentation Content */}
+              <div className="overflow-y-auto h-[calc(90vh-64px)]">
                 <div className="p-8">
                   {/* Table of Contents - Only showing main topics */}
                   <div className="mb-8 bg-gray-800/30 p-5 rounded-xl backdrop-blur-sm border border-gray-700/30">
@@ -574,16 +573,6 @@ const ProductPage = () => {
                       </button>
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              {/* Enhanced Footer */}
-              <div className="bg-gray-900 p-6 rounded-b-2xl border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-gray-500 text-sm">
-                <div>© 2023 InnoSphere Labs | All Rights Reserved</div>
-                <div className="flex space-x-4 mt-2 sm:mt-0">
-                  <a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
-                  <a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a>
-                  <a href="#" className="hover:text-blue-400 transition-colors">Support</a>
                 </div>
               </div>
             </motion.div>
