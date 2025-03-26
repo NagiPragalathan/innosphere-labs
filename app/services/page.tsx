@@ -578,8 +578,8 @@ export default function Services() {
       <ScrollIndicator />
       
       <main className="overflow-x-hidden">
-        {/* Hero Section with Gradient Background */}
-        <section className="py-20 px-4 sm:px-8 relative min-h-[60vh] flex items-center">
+        {/* Hero Section - Minimal height */}
+        <section className="py-2 px-4 sm:px-8 relative min-h-[15vh] flex items-center">
           <div className="absolute inset-0 z-0 bg-gradient-to-br from-purple-900/30 via-blue-900/20 to-black"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-0"></div>
@@ -590,12 +590,12 @@ export default function Services() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <h1 className="text-4xl sm:text-6xl font-bold mb-6">
+              <h1 className="text-xl sm:text-2xl font-bold mb-1">
                 <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
                   Our Services
                 </span>
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+              <p className="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto mb-2">
                 Innovative solutions designed to transform your business and drive growth in the digital era
               </p>
               <motion.div 
@@ -605,7 +605,7 @@ export default function Services() {
               >
                 <Link 
                   href="/#contact"
-                  className="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+                  className="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity text-xs"
                 >
                   Get Started
                 </Link>
@@ -656,7 +656,8 @@ export default function Services() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={cardVariants}
-                  className="relative overflow-hidden group rounded-2xl h-[340px] sm:h-[320px] border border-gray-800 hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-900/10"
+                  className="relative overflow-hidden group rounded-2xl h-[340px] sm:h-[320px] border border-gray-800 hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-900/10 cursor-pointer"
+                  onClick={() => setActiveService(service.id)}
                 >
                   {/* Animated code background */}
                   <div className="absolute inset-0 opacity-30 group-hover:opacity-40 transition-opacity duration-500">
@@ -683,21 +684,13 @@ export default function Services() {
                     <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">{service.title}</h3>
                     <p className="text-sm text-white/80 mb-2">{service.description}</p>
                     
-                    <div className="mt-auto">
-                      <button 
-                        onClick={() => setActiveService(service.id)}
-                        className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white transition-all duration-200 bg-black/40 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-black/60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 group"
-                      >
-                        <span>Learn More</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      </button>
+                    {/* Add a subtle "View Details" indicator */}
+                    <div className="mt-auto flex items-center text-sm text-cyan-400">
+                      <span>View Details</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
                     </div>
-                    
-                    {/* Tech decorative elements */}
-                    <div className="absolute top-4 right-4 w-20 h-20 border border-gray-700/30 rounded-full opacity-20"></div>
-                    <div className="absolute bottom-12 right-4 w-12 h-12 border border-gray-700/30 rounded-lg opacity-10 rotate-12"></div>
                   </div>
                 </motion.div>
               ))}
@@ -733,31 +726,39 @@ export default function Services() {
         </motion.section>
       </main>
       
-      {/* Service Documentation Modal with Enhanced UI */}
+      {/* Modal - Updated with 90% width and close button */}
       <AnimatePresence>
         {activeService !== null && (
           <div 
-            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-start justify-center overflow-y-auto py-4"
             onClick={() => setActiveService(null)}
           >
             <motion.div 
-              className="relative bg-gradient-to-b from-gray-900 to-black rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-gray-800 shadow-2xl"
+              className="relative bg-gradient-to-b from-gray-900 to-black w-[90%] min-h-screen rounded-xl overflow-hidden border border-gray-800 shadow-2xl my-4"
               variants={modalVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Enhanced Header with gradient background */}
-              <div className="bg-gradient-to-r from-purple-600 to-cyan-500 p-8 rounded-t-2xl relative overflow-hidden">
+              {/* Close button - Repositioned */}
+              <button 
+                onClick={() => setActiveService(null)}
+                className="absolute top-4 right-4 z-50 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 border border-gray-700/50 backdrop-blur-sm"
+                aria-label="Close modal"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Modal Header - Minimal height */}
+              <div className="bg-gradient-to-r from-purple-600 to-cyan-500 p-2 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                   <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-white/10"></div>
                   <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/20 to-transparent"></div>
-                  {/* Added geometric patterns */}
                   <div className="absolute top-10 left-10 w-20 h-20 border border-white/10 rounded-lg rotate-45"></div>
                   <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full"></div>
-                  
-                  {/* Added gradient blob image to modal header */}
                   <div className="absolute -top-10 -right-10 w-48 h-48 mix-blend-screen opacity-40">
                     <img 
                       src="https://images.rawpixel.com/image_png_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LWVsZW1lbnQtcGgtMDE2YS5wbmc.png" 
@@ -768,30 +769,21 @@ export default function Services() {
                 </div>
                 
                 <div className="relative z-10">
-                  <div className="inline-block text-5xl mb-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm shadow-xl">
+                  <div className="inline-block text-2xl mb-1 bg-white/10 p-2 rounded-xl backdrop-blur-sm shadow-xl">
                     {services.find(s => s.id === activeService)?.icon}
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                  <h2 className="text-lg font-bold text-white mb-1">
                     {services.find(s => s.id === activeService)?.title}
                   </h2>
-                  <p className="text-white/90 text-lg max-w-3xl">
+                  <p className="text-white/90 text-sm max-w-3xl">
                     {services.find(s => s.id === activeService)?.description}
                   </p>
                 </div>
               </div>
               
-              <button 
-                onClick={() => setActiveService(null)}
-                className="absolute top-6 right-6 text-white z-20 bg-gray-800/90 p-2.5 rounded-full transition-all hover:bg-gray-700 shadow-lg border border-gray-700"
-                aria-label="Close modal"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              
-              <div className="overflow-y-auto custom-scrollbar" style={{ maxHeight: 'calc(90vh - 250px)' }}>
-                <div className="p-8">
+              {/* Updated scrollable content area */}
+              <div className="overflow-y-auto custom-scrollbar h-[calc(100vh-100px)]">
+                <div className="p-6">
                   {/* Table of Contents */}
                   {services.find(s => s.id === activeService)?.readme && (
                     <div className="mb-8 bg-gray-800/30 p-5 rounded-xl backdrop-blur-sm border border-gray-700/30">
