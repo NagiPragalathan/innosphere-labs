@@ -14,23 +14,29 @@ const Contact: React.FC = () => {
             <div className="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="">
                     <h2 className="text-3xl font-normal text-white sm:text-4xl lg:text-5xl xl:text-6xl">Need help? Get in touch</h2>
-                    <p className="mt-4 text-base font-normal text-gray-400 sm:text-lg">Amet minim mollit non deserunt ullamco est sit aliqua dolor.</p>
+                    <p className="mt-4 text-base font-normal text-gray-400 sm:text-lg">Pioneering the next generation of digital solutions with cutting-edge innovation and transformative technology.</p>
                 </div>
-
                 <div className="grid grid-cols-1 mt-12 sm:mt-16 lg:mt-20 lg:grid-cols-6 lg:gap-x-24 gap-y-12">
                     <div className="space-y-8 lg:space-y-12 lg:col-span-2 lg:order-last">
                         <div>
                             <h3 className="text-xl font-normal text-white sm:text-2xl">
-                                <a href="#" title="" className=""> +1 (483) 299 1400 </a>
+                                <a href="tel:+919894639463" title="Call us" className="">📞 +91 989463 9463</a>
                             </h3>
-                            <p className="mt-4 text-base font-normal text-gray-400">Call us directly if you need any urgent help. Our agents will help you.</p>
+                            <p className="mt-4 text-base font-normal text-gray-400">Call us directly if you need any urgent help.</p>
                         </div>
 
                         <div>
                             <h3 className="text-xl font-normal text-white sm:text-2xl">
-                                <a href="#" title="" className=""> contact@example.com </a>
+                                <a href="mailto:contact@InnoSphereLabs.com" title="Email us" className="">✉ contact@InnoSphereLabs.com</a>
                             </h3>
-                            <p className="mt-4 text-base font-normal text-gray-400">Email us directly if you need any help. Our agents will help you.</p>
+                            <p className="mt-4 text-base font-normal text-gray-400">Email us directly if you need any help.</p>
+                        </div>
+
+                        <div>
+                            <h3 className="text-xl font-normal text-white sm:text-2xl">
+                                <a href="https://www.innospherelabs.com" target="_blank" rel="noopener noreferrer" className="">🌐 www.innospherelabs.com</a>
+                            </h3>
+                            <p className="mt-4 text-base font-normal text-gray-400">Visit our website for more information.</p>
                         </div>
                     </div>
 

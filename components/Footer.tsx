@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Footer = () => {
   const footerLinks = {
@@ -22,7 +23,10 @@ const Footer = () => {
             </div>
             
             <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6">
-              Pioneering the next generation of digital solutions with cutting-edge innovation and transformative technology.
+                INNOSPHERELABS<br/>
+                Headquarters<br/>
+                Guindy Industrial Estate,<br/>
+                Chennai 600032, India
             </p>
             
             <div className="flex space-x-3 sm:space-x-4">
@@ -94,15 +98,30 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy", "Contact Us"].map((item, i) => (
-              <a 
-                key={i}
-                href="#" 
-                className="text-xs sm:text-sm text-gray-400 hover:text-cyan-400 transition-colors"
-              >
-                {item}
-              </a>
-            ))}
+            <Link 
+              href="/privacy-policy" 
+              className="text-xs sm:text-sm text-gray-400 hover:text-cyan-400 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link 
+              href="/terms-of-service" 
+              className="text-xs sm:text-sm text-gray-400 hover:text-cyan-400 transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link 
+              href="/cookie-policy" 
+              className="text-xs sm:text-sm text-gray-400 hover:text-cyan-400 transition-colors"
+            >
+              Cookie Policy
+            </Link>
+            <Link 
+              href="/#contact" 
+              className="text-xs sm:text-sm text-gray-400 hover:text-cyan-400 transition-colors"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </div>
