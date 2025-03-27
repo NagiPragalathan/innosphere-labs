@@ -48,56 +48,82 @@ const Contact: React.FC = () => {
                     </div>
 
                     <div className="lg:col-span-4">
-                        <form action="#" method="POST" className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <form 
+                            action="https://formsubmit.co/your-email@innospherelabs.com" 
+                            method="POST" 
+                            className="grid grid-cols-1 gap-6 sm:grid-cols-2"
+                        >
+                            {/* Hidden inputs for FormSubmit configuration */}
+                            <input type="hidden" name="_subject" value="New Contact Form Submission" />
+                            <input type="hidden" name="_template" value="table" />
+                            <input type="hidden" name="_next" value="https://innospherelabs.com/thank-you" />
+                            <input type="hidden" name="_captcha" value="true" />
+
                             <div>
-                                <label htmlFor="name" className="text-base font-normal text-white"> Your name </label>
+                                <label htmlFor="name" className="text-base font-normal text-white">Your name</label>
                                 <div className="mt-2">
-                                    <input type="text" name="name" id="name" placeholder="Enter your full name" className="block w-full px-5 py-4 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white focus:ring-1" />
+                                    <input 
+                                        type="text" 
+                                        name="name" 
+                                        id="name" 
+                                        placeholder="Enter your full name" 
+                                        className="block w-full px-5 py-4 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white focus:ring-1" 
+                                        required 
+                                    />
                                 </div>
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="text-base font-normal text-white"> Your email </label>
+                                <label htmlFor="email" className="text-base font-normal text-white">Your email</label>
                                 <div className="mt-2">
-                                    <input type="email" name="email" id="email" placeholder="Enter your email address" className="block w-full px-5 py-4 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white focus:ring-1" />
+                                    <input 
+                                        type="email" 
+                                        name="email" 
+                                        id="email" 
+                                        placeholder="Enter your email address" 
+                                        className="block w-full px-5 py-4 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white focus:ring-1" 
+                                        required 
+                                    />
                                 </div>
                             </div>
 
                             <div className="sm:col-span-2">
-                                <label htmlFor="service" className="text-base font-normal text-white">
-                                    What kind of service are you looking for?
-                                </label>
+                                <label htmlFor="subject" className="text-base font-normal text-white">What kind of service are you looking for?</label>
                                 <div className="mt-2">
                                     <select 
-                                        name="service" 
-                                        id="service" 
-                                        className="block w-full py-4 pl-5 pr-10 text-base font-normal text-white placeholder-gray-500 
-                                                 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white 
-                                                 focus:ring-1 hover:border-gray-700 transition-colors duration-200"
+                                        name="subject" 
+                                        id="subject" 
+                                        className="block w-full py-4 pl-5 pr-10 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white focus:ring-1"
                                         required
                                     >
-                                        {serviceOptions.map((option) => (
-                                            <option 
-                                                key={option.value} 
-                                                value={option.value}
-                                                className="bg-gray-900 text-white py-2"
-                                            >
-                                                {option.label}
-                                            </option>
-                                        ))}
+                                        <option value="">Select a subject</option>
+                                        <option value="service">Service</option>
+                                        <option value="product">Product</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div className="sm:col-span-2">
-                                <label htmlFor="message" className="text-base font-normal text-white"> Message </label>
+                                <label htmlFor="message" className="text-base font-normal text-white">Message</label>
                                 <div className="mt-2">
-                                    <textarea name="message" id="message" placeholder="Write your message" rows={4} className="block w-full px-5 py-4 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md resize-y focus:border-white focus:ring-white focus:ring-1"></textarea>
+                                    <textarea 
+                                        name="message" 
+                                        id="message" 
+                                        placeholder="Write your message" 
+                                        rows={4} 
+                                        className="block w-full px-5 py-4 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md resize-y focus:border-white focus:ring-white focus:ring-1"
+                                        required
+                                    ></textarea>
                                 </div>
                             </div>
 
                             <div className="sm:col-span-2">
-                                <button type="submit" className="inline-flex items-center justify-center px-10 py-4 text-base font-normal text-white transition-all duration-200 rounded-md bg-gradient-to-r from-cyan-500 to-purple-500 hover:contrast-150 filter">Send Message</button>
+                                <button 
+                                    type="submit" 
+                                    className="inline-flex items-center justify-center px-10 py-4 text-base font-normal text-white transition-all duration-200 rounded-md bg-gradient-to-r from-cyan-500 to-purple-500 hover:contrast-150 filter"
+                                >
+                                    Send Message
+                                </button>
                             </div>
                         </form>
                     </div>
