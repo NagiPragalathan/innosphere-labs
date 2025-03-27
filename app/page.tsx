@@ -113,7 +113,7 @@ export default function Home() {
               Discover our comprehensive suite of innovative solutions designed to transform your business
             </p>
             <Link 
-              href="/products"
+              href="/product"
               className="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
             >
               View All Products

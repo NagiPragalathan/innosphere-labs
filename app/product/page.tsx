@@ -246,15 +246,14 @@ const ProductPage = () => {
               </p>
               
               <div className="flex flex-wrap gap-4 mt-10">
-                <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-medium hover:opacity-90 transition-opacity flex items-center gap-2">
-                  <span>Explore Products</span>
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-                <button className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 text-white px-8 py-4 rounded-xl font-medium hover:bg-gray-700/50 transition-colors">
-                  Contact Sales
-                </button>
+                <a href="/#producthead">
+                  <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-medium hover:opacity-90 transition-opacity flex items-center gap-2">
+                    <span>Explore Products</span>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </a>
               </div>
               
               <div className="flex flex-wrap gap-6 mt-12">
@@ -364,7 +363,7 @@ const ProductPage = () => {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-6" id="producthead">
                   <div className={`text-4xl p-4 rounded-2xl ${category.bgColor} ${category.borderColor} border`}>
                     {category.icon}
                   </div>
@@ -416,46 +415,6 @@ const ProductPage = () => {
               </div>
             </motion.div>
           ))}
-          
-          {/* CTA Section */}
-          <motion.div 
-            className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
-              <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500 opacity-10 rounded-full blur-[150px]" />
-              <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-purple-500 opacity-10 rounded-full blur-[150px]" />
-            </div>
-            
-            <motion.div 
-              className="max-w-4xl mx-auto text-center bg-gray-900/50 backdrop-blur-md p-10 rounded-3xl border border-gray-800"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                  Ready to Transform Your Business?
-                </span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-10">
-                Contact our team to discuss how our products can help you achieve your business goals
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-4 rounded-xl font-medium hover:opacity-90 transition-opacity">
-                  Schedule a Demo
-                </button>
-                <button className="bg-gray-800 text-white px-8 py-4 rounded-xl font-medium hover:bg-gray-700 transition-colors">
-                  Contact Sales
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 
@@ -552,27 +511,7 @@ const ProductPage = () => {
                       </ReactMarkdown>
                     </div>
                   </div>
-                  
-                  {/* Enhanced Call to Action */}
-                  <div className="mt-12 bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-xl border border-blue-500/20 shadow-lg">
-                    <h3 className="text-2xl font-semibold mb-6 text-center text-white">Ready to Get Started?</h3>
-                    <p className="text-xl text-center text-gray-300 mb-8">Transform your workflow with our cutting-edge solutions</p>
-                    
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                      <button className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-8 py-3 rounded-xl font-medium hover:opacity-90 transition-all hover:shadow-lg hover:shadow-blue-500/20 flex items-center justify-center gap-2">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        Schedule a Demo
-                      </button>
-                      <button className="bg-gray-700 text-white px-8 py-3 rounded-xl font-medium hover:bg-gray-600 transition-all hover:shadow-lg flex items-center justify-center gap-2">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        Contact Sales
-                      </button>
-                    </div>
-                  </div>
+s
                 </div>
               </div>
             </motion.div>
