@@ -1,5 +1,12 @@
 import React from 'react';
 
+// Update these service options at the top of the file, after the imports
+const serviceOptions = [
+    { value: "", label: "Select a subject" },
+    { value: "service", label: "Service" },
+    { value: "product", label: "Product" },
+];
+
 const Contact: React.FC = () => {
     return (
         <section className="relative py-12 overflow-hidden bg-black sm:py-16 lg:py-20 xl:py-24" id='contact'>
@@ -57,10 +64,27 @@ const Contact: React.FC = () => {
                             </div>
 
                             <div className="sm:col-span-2">
-                                <label htmlFor="service" className="text-base font-normal text-white"> What kind of service are you looking for? </label>
+                                <label htmlFor="service" className="text-base font-normal text-white">
+                                    What kind of service are you looking for?
+                                </label>
                                 <div className="mt-2">
-                                    <select name="service" id="service" className="block w-full py-4 pl-5 pr-10 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white focus:ring-1">
-                                        <option value="">Select a subject</option>
+                                    <select 
+                                        name="service" 
+                                        id="service" 
+                                        className="block w-full py-4 pl-5 pr-10 text-base font-normal text-white placeholder-gray-500 
+                                                 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white 
+                                                 focus:ring-1 hover:border-gray-700 transition-colors duration-200"
+                                        required
+                                    >
+                                        {serviceOptions.map((option) => (
+                                            <option 
+                                                key={option.value} 
+                                                value={option.value}
+                                                className="bg-gray-900 text-white py-2"
+                                            >
+                                                {option.label}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
                             </div>

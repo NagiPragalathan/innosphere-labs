@@ -421,7 +421,7 @@ export default function BlogPage() {
                     </Link>
                     
                     <Link 
-                      href="/contact"
+                      href="/#contact"
                       className="px-6 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white font-medium 
                               hover:bg-gray-800 hover:border-gray-600 transition-all duration-300"
                     >

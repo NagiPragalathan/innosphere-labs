@@ -578,39 +578,124 @@ export default function Services() {
       <ScrollIndicator />
       
       <main className="overflow-x-hidden">
-        {/* Hero Section - Minimal height */}
-        <section className="py-2 px-4 sm:px-8 relative min-h-[15vh] flex items-center">
-          <div className="absolute inset-0 z-0 bg-gradient-to-br from-purple-900/30 via-blue-900/20 to-black"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-0"></div>
-          <div className="max-w-6xl mx-auto relative z-10 w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
-            >
-              <h1 className="text-xl sm:text-2xl font-bold mb-1">
-                <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                  Our Services
-                </span>
-              </h1>
-              <p className="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto mb-2">
-                Innovative solutions designed to transform your business and drive growth in the digital era
-              </p>
+        {/* Enhanced Hero Section with top spacing */}
+        <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-32 pb-20">
+          {/* Background Effects */}
+          <div className="absolute inset-0 bg-black">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-900/20 via-black to-black"></div>
+            <div className="absolute bottom-0 right-0 w-2/3 h-2/3 bg-gradient-to-tl from-cyan-900/20 via-transparent to-transparent"></div>
+            
+            {/* Animated Gradient Orbs */}
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20"></div>
+          </div>
+
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+              {/* Left Content */}
               <motion.div 
+                className="lg:w-1/2 text-center lg:text-left"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
+                transition={{ duration: 0.8 }}
               >
-                <Link 
-                  href="/#contact"
-                  className="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity text-xs"
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  className="inline-block mb-4 px-4 py-1.5 bg-gray-800/70 backdrop-blur-sm rounded-full border border-gray-700/50"
                 >
-                  Get Started
-                </Link>
+                  <span className="flex items-center text-sm text-cyan-400">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
+                    Innovative Solutions
+                  </span>
+                </motion.div>
+
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                  <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                    Transform Your Business
+                  </span>
+                  <br />
+                  <span className="text-white text-3xl sm:text-4xl lg:text-5xl">
+                    With Our Services
+                  </span>
+                </h1>
+
+                <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0">
+                  Innovative solutions designed to drive growth and digital transformation in the modern business landscape.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link 
+                    href="/#contact"
+                    className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-4 rounded-xl font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20 flex items-center justify-center gap-2"
+                  >
+                    <span>Get Started</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
+                  
+                  <Link 
+                    href="/#contact"
+                    className="bg-gray-800/80 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-medium hover:bg-gray-700/80 transition-all duration-300 border border-gray-700/50 flex items-center justify-center gap-2"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <span>Contact Sales</span>
+                  </Link>
+                </div>
+
+                {/* Service Stats */}
+                <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
+                  <div className="text-center">
+                    <div className="text-2xl sm:text-3xl font-bold text-cyan-400">20+</div>
+                    <div className="text-sm text-gray-400">Services Offered</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl sm:text-3xl font-bold text-purple-400">500+</div>
+                    <div className="text-sm text-gray-400">Projects Completed</div>
+                  </div>
+                  <div className="text-center hidden sm:block">
+                    <div className="text-2xl sm:text-3xl font-bold text-cyan-400">98%</div>
+                    <div className="text-sm text-gray-400">Client Satisfaction</div>
+                  </div>
+                </div>
               </motion.div>
-            </motion.div>
+
+              {/* Right Content - Decorative Element */}
+              <motion.div 
+                className="lg:w-1/2 relative hidden lg:block"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="relative w-full aspect-square max-w-lg mx-auto">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="relative z-10 grid grid-cols-2 gap-4">
+                    {[...Array(4)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
+                        className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300"
+                      >
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center mb-4">
+                          {/* Add different icons for each box */}
+                        </div>
+                        <div className="h-2 w-20 bg-gray-700/50 rounded-full mb-2"></div>
+                        <div className="h-2 w-16 bg-gray-700/50 rounded-full"></div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
         
@@ -717,7 +802,7 @@ export default function Services() {
               Let's discuss how our services can help you achieve your business goals and drive innovation
             </p>
             <Link 
-              href="/contact"
+              href="/#contact"
               className="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
             >
               Get in Touch
@@ -831,7 +916,7 @@ export default function Services() {
                     
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                       <Link 
-                        href="/contact"
+                        href="/#contact"
                         className="bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-8 py-3 rounded-xl font-medium hover:opacity-90 transition-all hover:shadow-lg hover:shadow-purple-500/20 flex items-center justify-center gap-2"
                       >
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

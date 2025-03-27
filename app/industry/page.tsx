@@ -400,7 +400,7 @@ const TechHero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <Link 
-              href="/contact"
+              href="/#contact"
               className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-medium 
                       hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 overflow-hidden"
             >
@@ -409,7 +409,7 @@ const TechHero = () => {
             </Link>
             
             <Link 
-              href="/products"
+              href="/product"
               className="px-8 py-4 bg-gray-900 border border-gray-700 rounded-lg text-white font-medium 
                       hover:bg-gray-800 hover:border-gray-600 transition-all duration-300 relative group overflow-hidden"
             >
@@ -582,7 +582,7 @@ const TechCTA = () => (
             
             <div className="flex flex-wrap gap-4">
               <Link 
-                href="/contact"
+                href="/#contact"
                 className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-medium 
                         hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 flex items-center"
               >
@@ -590,14 +590,6 @@ const TechCTA = () => (
                 <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </Link>
-              
-              <Link 
-                href="/case-studies"
-                className="px-6 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white font-medium 
-                        hover:bg-gray-800 hover:border-gray-600 transition-all duration-300"
-              >
-                View Case Studies
               </Link>
             </div>
           </div>
