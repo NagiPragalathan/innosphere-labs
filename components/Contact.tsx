@@ -49,14 +49,14 @@ const Contact: React.FC = () => {
 
                     <div className="lg:col-span-4">
                         <form 
-                            action="https://formsubmit.co/your-email@innospherelabs.com" 
+                            action="https://formsubmit.co/raj@docchain.cloud" 
                             method="POST" 
                             className="grid grid-cols-1 gap-6 sm:grid-cols-2"
                         >
                             {/* Hidden inputs for FormSubmit configuration */}
                             <input type="hidden" name="_subject" value="New Contact Form Submission" />
                             <input type="hidden" name="_template" value="table" />
-                            <input type="hidden" name="_next" value="https://innospherelabs.com/thank-you" />
+                            <input type="hidden" name="_next" value="https://www.innospherelabs.com" />
                             <input type="hidden" name="_captcha" value="true" />
 
                             <div>
@@ -90,7 +90,7 @@ const Contact: React.FC = () => {
                             <div className="sm:col-span-2">
                                 <label htmlFor="subject" className="text-base font-normal text-white">What kind of service are you looking for?</label>
                                 <div className="mt-2">
-                                    <select 
+                                    <select  
                                         name="subject" 
                                         id="subject" 
                                         className="block w-full py-4 pl-5 pr-10 text-base font-normal text-white placeholder-gray-500 bg-black border border-gray-800 rounded-md focus:border-white focus:ring-white focus:ring-1"

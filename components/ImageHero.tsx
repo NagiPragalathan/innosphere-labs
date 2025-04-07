@@ -202,12 +202,12 @@ const ImageHero = () => {
           {/* Left side - Content */}
           <div className="w-full lg:w-1/2 text-left lg:pr-8">
             <motion.div
-              className="mb-4 inline-block"
+              className="mb-4 inline-block !mt-[35px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
+              <span className="!text-[14px] !font-bold px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
                 Where Innovation Meets Collective Genius
               </span>
             </motion.div>

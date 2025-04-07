@@ -156,7 +156,7 @@ const Header = () => {
                 transition={{ delay: menuItems.length * 0.1 }}
               >
                 <Link 
-                  href="/contact"
+                  href="/#contact"
                   className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-5 py-2 rounded-full hover:opacity-90 transition-opacity inline-block mt-2"
                   onClick={() => setIsMenuOpen(false)}
                 >

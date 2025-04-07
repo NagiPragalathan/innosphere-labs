@@ -661,7 +661,7 @@ export default function Services() {
                     <div className="text-sm text-gray-400">Projects Completed</div>
                   </div>
                   <div className="text-center hidden sm:block">
-                    <div className="text-2xl sm:text-3xl font-bold text-cyan-400">98%</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-cyan-400">100%</div>
                     <div className="text-sm text-gray-400">Client Satisfaction</div>
                   </div>
                 </div>
@@ -715,12 +715,12 @@ export default function Services() {
               variants={sectionVariants}
               className="mb-16 text-center sm:text-left"
             >
-              <div className="inline-block mb-4 px-4 py-1.5 bg-gray-800/70 backdrop-blur-sm rounded-full border border-gray-700 text-sm text-cyan-400">
+              {/* <div className="inline-block mb-4 px-4 py-1.5 bg-gray-800/70 backdrop-blur-sm rounded-full border border-gray-700 text-sm text-cyan-400">
                 <span className="flex items-center">
                   <span className="w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
                   Innovative Solutions
                 </span>
-              </div>
+              </div> */}
               
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
@@ -854,9 +854,6 @@ export default function Services() {
                 </div>
                 
                 <div className="relative z-10">
-                  <div className="inline-block text-2xl mb-1 bg-white/10 p-2 rounded-xl backdrop-blur-sm shadow-xl">
-                    {services.find(s => s.id === activeService)?.icon}
-                  </div>
                   <h2 className="text-lg font-bold text-white mb-1">
                     {services.find(s => s.id === activeService)?.title}
                   </h2>
@@ -869,37 +866,6 @@ export default function Services() {
               {/* Updated scrollable content area */}
               <div className="overflow-y-auto custom-scrollbar h-[calc(100vh-100px)]">
                 <div className="p-6">
-                  {/* Table of Contents */}
-                  {services.find(s => s.id === activeService)?.readme && (
-                    <div className="mb-8 bg-gray-800/30 p-5 rounded-xl backdrop-blur-sm border border-gray-700/30">
-                      <h3 className="text-lg font-semibold mb-4 text-white flex items-center">
-                        <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
-                        </svg>
-                        Table of Contents
-                      </h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {extractMainHeadings(services.find(s => s.id === activeService)?.readme || '').map((heading, index) => (
-                          <a 
-                            key={index}
-                            href={`#${heading.id}`}
-                            className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center font-medium"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              const element = document.getElementById(heading.id);
-                              if (element) {
-                                element.scrollIntoView({ behavior: 'smooth' });
-                              }
-                            }}
-                          >
-                            <div className="w-2 h-2 bg-cyan-500 rounded-full mr-2"></div>
-                            {heading.text}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
                   {/* Main Content with ReactMarkdown */}
                   {services.find(s => s.id === activeService)?.readme && (
                     <div className="bg-gray-800/30 p-6 rounded-xl backdrop-blur-sm border border-gray-700/30 shadow-lg">
