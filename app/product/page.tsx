@@ -473,35 +473,6 @@ const ProductPage = () => {
               {/* Documentation Content */}
               <div className="overflow-y-auto h-[calc(90vh-64px)]">
                 <div className="p-8">
-                  {/* Table of Contents - Only showing main topics */}
-                  <div className="mb-8 bg-gray-800/30 p-5 rounded-xl backdrop-blur-sm border border-gray-700/30">
-                    <h3 className="text-lg font-semibold mb-4 text-white flex items-center">
-                      <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
-                      </svg>
-                      Table of Contents
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {extractMainHeadings(productDocs[selectedProduct as keyof typeof productDocs]).map((heading, index) => (
-                        <a 
-                          key={index}
-                          href={`#${heading.id}`}
-                          className="text-blue-400 hover:text-blue-300 transition-colors flex items-center font-medium"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            const element = document.getElementById(heading.id);
-                            if (element) {
-                              element.scrollIntoView({ behavior: 'smooth' });
-                            }
-                          }}
-                        >
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                          {heading.text}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                  
                   {/* Documentation Content with Improved Styling */}
                   <div className="space-y-8">
                     {/* Main content with styled markdown */}
@@ -511,7 +482,6 @@ const ProductPage = () => {
                       </ReactMarkdown>
                     </div>
                   </div>
-s
                 </div>
               </div>
             </motion.div>
