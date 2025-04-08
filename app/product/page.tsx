@@ -22,7 +22,9 @@ const productDescriptions = {
   "AI-Powered Sales Assistant": "Intelligent sales automation and lead generation",
   "Compliance Buddy Plugin": "Seamless compliance integration for existing systems",
   "Zoho CRM Integration Plugin": "Enhanced Zoho CRM with compliance features",
-  "Freshworks Compliance Monitoring Plugin": "Compliance monitoring for Freshworks suite",
+  "SyncBridge for Zoho": "Compliance monitoring for Freshworks suite",
+  "Eduwallets: AI & Blockchain-Powered Fee Management": "AI-powered fee management and payment processing",
+  "UNIPASS: Automated Student Gate Pass Management System": "Automated gate pass management system for universities",
 };
 
 // Define a more specific type for the component props
@@ -137,18 +139,18 @@ const ProductPage = () => {
       bgColor: "bg-purple-500/5",
       borderColor: "border-purple-500/20",
       icon: "🧠",
-      products: ["Compliance Buddy", "ProcureSense", "AI-QGEN", "CareSync"]
+      products: ["ProcureSense", "AI-QGEN"]
     },
     {
       id: "cloud",
-      title: "Cloud & SaaS Platforms",
+      title: "Cloud & SaaS Platforms - with AI & Blockchain",
       description: "Scalable cloud infrastructure and software solutions",
       color: "from-cyan-500 to-emerald-500",
       textColor: "text-cyan-500",
       bgColor: "bg-cyan-500/5",
       borderColor: "border-cyan-500/20",
       icon: "☁️",
-      products: ["Enterprise SaaS Solutions", "Customized Cloud Solutions"]
+      products: ["Eduwallets: AI & Blockchain-Powered Fee Management", "UNIPASS: Automated Student Gate Pass Management System"]
     },
     {
       id: "plugins",
@@ -162,9 +164,9 @@ const ProductPage = () => {
       products: [
         "Blockchain Document Vault",
         "AI-Powered Sales Assistant",
-        "Compliance Buddy Plugin",
-        "Zoho CRM Integration Plugin",
-        "Freshworks Compliance Monitoring Plugin"
+        "CareSync",
+        "SyncBridge for Zoho",
+        "Compliance Buddy",
       ]
     }
   ];

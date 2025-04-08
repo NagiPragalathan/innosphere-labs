@@ -239,15 +239,9 @@ CareSync empowers hospitals to automate nurse scheduling using AI-driven acuity 
 *Transforming healthcare workforce management through AI innovation*`,
 
 
-    "Enterprise SaaS Solutions": "# Enterprise SaaS Solutions Documentation\n\nReplace with actual documentation",
-    "Customized Cloud Solutions": "# Customized Cloud Solutions Documentation\n\nReplace with actual documentation",
-    "Blockchain Document Vault": "# Blockchain Document Vault Documentation\n\nReplace with actual documentation",
-    "AI-Powered Sales Assistant": "# AI-Powered Sales Assistant Documentation\n\nReplace with actual documentation",
-    "Compliance Buddy Plugin": "# Compliance Buddy Plugin Documentation\n\nReplace with actual documentation",
-    "Zoho CRM Integration Plugin": "# Zoho CRM Integration Plugin Documentation\n\nReplace with actual documentation",
-    "Freshworks Compliance Monitoring Plugin": "# Freshworks Compliance Monitoring Plugin Documentation\n\nReplace with actual documentation",
-    "Eduwallets": `
-# Modernize Fee Collection with Secure, AI-Driven Solutions
+    "Eduwallets: AI & Blockchain-Powered Fee Management": `
+# Eduwallets: AI & Blockchain-Powered Fee Management
+### Modernize Fee Collection with Secure, AI-Driven Solutions
 ### Streamline Payments, Reduce Delays, and Ensure Data Accuracy
 
 ## Overview
@@ -271,13 +265,10 @@ Eduwallets empowers schools and universities with a branded, blockchain-secured 
 - **99.9% Uptime**: Ensure uninterrupted access during admission seasons.
 - **Multi-Language Support**: Serve diverse parent communities effortlessly.
 - **Compliance**: GDPR-ready with RBAC and georedundant AWS backups.
-
----
-
-*Revolutionizing educational fee management through AI and blockchain innovation*`,
-
-    "UNIPASS": `
-# Digitize Campus Security with Smart, Automated Gate Pass Management
+`,
+    "UNIPASS: Automated Student Gate Pass Management System": `
+# UNIPASS: Automated Student Gate Pass Management System
+### Digitize Campus Security with Smart, Automated Gate Pass Management
 ### Streamline Student Movements, Ensure Compliance, and Enhance Accountability
 
 ## Overview
@@ -304,13 +295,73 @@ UNIPASS revolutionizes how universities manage student gate pass requests. By au
 - **Hostel Management**: Automate curfew compliance and parental collaboration.
 - **Event Security**: Track student attendance for off-campus events.
 - **Audit Reporting**: Generate granular reports on approvals, violations, and timelines.
+`,
+    "Blockchain Document Vault": `
+# EverLock - Blockchain Powered Document Vault for Secure & Immutable Document Storage
+### Universal Document Security for Every CRM and ERP
+### Blockchain-Powered Storage, Verification, and Sharing Across Platforms
 
----
+## Overview
 
-*Transforming campus security through intelligent automation and compliance*`,
+The Blockchain Document Vault is a platform-agnostic solution designed to integrate seamlessly with **Zoho CRM, Salesforce, HubSpot, Freshworks, Microsoft Dynamics**, and any ERP via APIs. It transforms your CRM into a decentralized, tamper-proof document hub, ensuring compliance and trust across industries.
 
-    "SyncBridge": `
-# Seamless Zoho Sync, Simplified
+## Key Features
+
+- **Multi-Platform Compatibility**: Works natively with **Salesforce, HubSpot, Freshworks, Zoho CRM, and Microsoft Dynamics**.
+- **Universal API Integration**: RESTful APIs connect to **SAP, Oracle, NetSuite**, and custom ERPs.
+- **Tamper-Proof Storage**: Hash documents onto **Ethereum, Hyperledger, or Polkadot** for immutable audit trails.
+- **Encrypted Sharing**: Role-based access with AES-256 encryption and time-bound permissions.
+- **Cross-Platform Verification**: Validate documents instantly via blockchain, regardless of the source system.
+
+## Technology & Security
+
+- **Blockchain**: Supports public (Ethereum) and private (Hyperledger) chains.
+- **APIs**: OAuth 2.0, OpenID Connect, and REST APIs for frictionless ERP/CRM integration.
+- **Compliance**: GDPR, HIPAA, SOC 2, and ISO 27001 certified.
+
+## Use Cases
+
+- **Salesforce Users**: Securely store contracts and NDAs with blockchain verification.
+- **Microsoft Dynamics**: Share encrypted financial reports across global teams.
+- **Freshworks**: Maintain HIPAA-compliant patient records in healthcare workflows.
+`,
+    "AI-Powered Sales Assistant": `
+# DealForge
+### "AI-Driven Sales Precision, Forged for Zoho."
+
+# CRM-Agnostic Sales Intelligence for Smarter Pipelines
+### Predict, Prioritize, and Personalize Across Salesforce, HubSpot, and Beyond
+
+## Overview
+
+This AI Assistant integrates with **Salesforce, HubSpot, Zoho CRM, Freshworks, and Microsoft Dynamics**, supercharging sales teams with predictive insights. Leverage machine learning to score leads, forecast deals, and automate outreach—no matter your CRM or ERP.
+
+## Key Features
+
+- **Cross-Platform Sync**: Pull data from **Salesforce, HubSpot, or Dynamics 365** into a unified AI engine.
+- **Universal API Access**: Connect to **SAP, Oracle, or Netsuite** for enriched lead scoring.
+- **Deal Prediction**: 95% accurate closure forecasts using XGBoost models.
+- **Sentiment-Driven Outreach**: Analyze emails in **Freshworks or Zoho CRM** to refine messaging.
+- **Automated Workflows**: Trigger follow-ups in **HubSpot or Salesforce** based on AI insights.
+
+## Technology & AI Capabilities
+
+- **Machine Learning**: Federated learning models adapt to your CRM's unique data.
+- **NLP**: BERT and GPT-4 analyze communication logs across platforms.
+- **APIs**: Webhooks and REST APIs for real-time ERP integration.
+
+## Use Cases
+
+- **Salesforce**: Prioritize high-value leads in complex enterprise pipelines.
+- **HubSpot**: Automate personalized follow-ups for SaaS trial users.
+- **Microsoft Dynamics**: Predict churn risks in manufacturing client portfolios.
+`,
+
+    "Compliance Buddy Plugin": "# Compliance Buddy Plugin Documentation\n\nReplace with actual documentation",
+    "Zoho CRM Integration Plugin": "# Zoho CRM Integration Plugin Documentation\n\nReplace with actual documentation",
+    "SyncBridge for Zoho": `
+# SyncBridge for Zoho: Real-Time CRM Synchronization
+### Seamless Zoho Sync, Simplified
 ### Unify Data Across Zoho CRM Accounts with Real-Time Precision
 
 ## Overview
@@ -346,16 +397,36 @@ SyncBridge transforms how businesses manage Zoho CRM data by enabling effortless
 - **Sales Teams**: Keep global teams aligned with unified lead and contact data across regional Zoho accounts.
 - **Marketing**: Sync campaign-generated leads in real time to ensure timely follow-ups.
 - **Enterprises**: Maintain consistency between Zoho CRM and ERPs like SAP for financial or inventory data.
+`,
+    "Eduwallets": `
+# Modernize Fee Collection with Secure, AI-Driven Solutions
+### Streamline Payments, Reduce Delays, and Ensure Data Accuracy
 
-## Why Choose SyncBridge?
+## Overview
 
-✅ **Zero Downtime**: Install and activate in minutes without disrupting workflows.
-✅ **Granular Control**: Block syncs between accounts or handpick leads to sync.
-✅ **Enterprise Scalability**: Trusted by SMBs to Fortune 500 companies managing 100,000+ records.
+Eduwallets empowers schools and universities with a branded, blockchain-secured platform for fee collection. From automated reminders to multi-language support, we simplify financial workflows for institutions globally.
+
+## Key Features
+
+- **Branded Payment Links**: Custom URLs (e.g., *school.eduwallets.com*) with OTP logins.
+- **Direct Bank Integration**: Instant transfers to institutional accounts.
+- **AI Data Cleaning**: Automatically validate and standardize fee structures.
+- **WhatsApp Payments**: Enable fee submissions via WhatsApp for parent convenience.
+
+## Technology
+
+- **Blockchain**: Ethereum-based smart contracts for tamper-proof transaction logs.
+- **Microservices**: Scalable cloud architecture supporting 50,000+ transactions/day.
+
+## Benefits
+
+- **99.9% Uptime**: Ensure uninterrupted access during admission seasons.
+- **Multi-Language Support**: Serve diverse parent communities effortlessly.
+- **Compliance**: GDPR-ready with RBAC and georedundant AWS backups.
 
 ---
 
-*Empowering Zoho Users with Effortless Data Harmony*`,
+*Revolutionizing educational fee management through AI and blockchain innovation*`,
 
     "EverLock": `
 # Universal Document Security for Every CRM and ERP
