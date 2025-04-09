@@ -167,7 +167,7 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   // Add coming soon state
-  const isComingSoon = true; // You can control this with an environment variable or API
+  const isComingSoon = false; // You can control this with an environment variable or API
   
   useEffect(() => {
     setIsLoaded(true);
