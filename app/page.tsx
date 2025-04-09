@@ -278,7 +278,6 @@ export default function Home() {
             transition={{ duration: 1 }}
           >
             <Contact />
-            <Footer />
           </motion.footer>
         </>
       )}
