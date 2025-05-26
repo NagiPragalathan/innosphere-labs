@@ -211,6 +211,15 @@ const ImageHero = () => {
           animation: float 6s ease-in-out infinite, rotate 12s linear infinite;
         }
 
+        /* Mobile view adjustment */
+        @media (max-width: 768px) {
+          .shape-one {
+                left: 19vh !important;
+                width: 91px !important;
+                top: -1vh;
+          }
+        }
+
         .shape-two {
           bottom: -10%;
           left: -10%;
