@@ -706,7 +706,7 @@ export default function IndustryPage() {
         />
 
         {/* LIS Section */}
-        <IndustrySection
+        {/* <IndustrySection
           title="Laboratory Information System (LIS)"
           subtitle="AI & Blockchain-Powered Lab Management"
           features={[
@@ -720,7 +720,7 @@ export default function IndustryPage() {
           bgGradient="from-cyan-900/20 to-black/50"
           icon="🧪"
           index={2}
-        />
+        /> */}
 
         {/* CareSync Section */}
         <IndustrySection
@@ -734,7 +734,7 @@ export default function IndustryPage() {
           gradient="from-cyan-500 to-teal-600"
           bgGradient="from-teal-900/20 to-black/50"
           icon="👩‍⚕️"
-          index={3}
+          index={2}
         />
 
         {/* DocChain Section */}
@@ -749,7 +749,7 @@ export default function IndustryPage() {
           gradient="from-teal-400 to-blue-600"
           bgGradient="from-blue-900/20 to-black/50"
           icon="📄"
-          index={4}
+          index={3}
         />
 
         {/* Education Section */}
@@ -767,11 +767,11 @@ export default function IndustryPage() {
           gradient="from-purple-400 to-indigo-600"
           bgGradient="from-indigo-900/20 to-black/50"
           icon="🎓"
-          index={5}
+          index={4}
         />
 
         {/* Supply Chain Section */}
-        <IndustrySection
+        {/* <IndustrySection
           title="Supply Chain & Logistics"
           subtitle="Intelligent, Blockchain-Powered Supply Chain Optimization"
           description="ISLABS enables real-time tracking, smart contracts, and AI-powered analytics to optimize supply chain operations:"
@@ -786,10 +786,10 @@ export default function IndustryPage() {
           bgGradient="from-green-900/20 to-black/50"
           icon="🚚"
           index={6}
-        />
+        /> */}
 
         {/* Retail Section */}
-        <IndustrySection
+        {/* <IndustrySection
           title="Retail & E-commerce"
           subtitle="Personalized, AI-Powered Retail Transformation"
           description="We help retailers and e-commerce businesses deliver personalized shopping experiences, fraud prevention, and AI-driven insights:"
@@ -804,7 +804,7 @@ export default function IndustryPage() {
           bgGradient="from-purple-900/20 to-black/50"
           icon="🛍️"
           index={7}
-        />
+        /> */}
         
         {/* CTA Section */}
         <TechCTA />

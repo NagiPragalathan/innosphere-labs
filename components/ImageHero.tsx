@@ -183,6 +183,70 @@ const ImageHero = () => {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
         }
+
+        .illustration-holder {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .main-illustration {
+          width: 100%;
+          height: auto;
+          position: relative;
+          z-index: 2;
+        }
+
+        .shapes {
+          position: absolute;
+          z-index: 1;
+        }
+
+        .shape-one {
+          position: absolute;
+          z-index: 2;
+          top: -4vh;
+          width: 140px;
+          left: 21vh;
+          animation: float 6s ease-in-out infinite, rotate 12s linear infinite;
+        }
+
+        .shape-two {
+          bottom: -10%;
+          left: -10%;
+          width: 40%;
+          height: auto;
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-three {
+          top: 40%;
+          right: -20%;
+          width: 35%;
+          height: auto;
+          animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        @keyframes rotate {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
       `}</style>
       
       <section 
@@ -286,11 +350,24 @@ const ImageHero = () => {
           >
             <div className="relative w-full max-w-md xl:max-w-lg">
               <div className="absolute -inset-1"></div>
-              <img 
-                src="https://innospherelabs-plugin-site.vercel.app/_next/image?url=https%3A%2F%2Flandingfoliocom.imgix.net%2Fstore%2Fcollection%2Fdusk%2Fimages%2Fhero%2F1%2F3d-illustration.png&w=640&q=75" 
-                alt="3D Illustration of InnoSphere Labs Technology" 
-                className="relative w-full h-auto rounded-2xl object-cover z-10"
-              />
+              <div className="illustration-holder relative">
+                <img 
+                  src="https://eduwallets.com/images/assets/ils_13.svg" 
+                  alt="Main Illustration" 
+                  className="main-illustration w-full h-auto z-10"
+                />
+                <img 
+                  src="https://eduwallets.com/images/assets/ils_13_1.svg" 
+                  alt="Shape One" 
+                  className="shapes shape-one absolute"
+                  style={{
+                    zIndex: 2,
+                    width: '140px',
+                    left: '21vh',
+                    animation: 'float 6s ease-in-out infinite, rotate 12s linear infinite'
+                  }}
+                />
+              </div>
             </div>
           </motion.div>
         </div>

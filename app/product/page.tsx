@@ -11,19 +11,19 @@ import type { ReactNode } from 'react';
 // Short descriptions for each product
 const productDescriptions = {
   "DocChain": "Secure document management and verification on blockchain technology",
-  "Halal Blockchain": "Transparent halal certification and tracking system",
+  // "Halal Blockchain": "Transparent halal certification and tracking system",
   "Compliance Buddy": "AI-powered compliance monitoring and reporting solution",
   "ProcureSense": "Intelligent procurement analytics and optimization platform",
   "AI-QGEN": "Automated quality assessment and reporting system",
   "CareSync": "Healthcare coordination and patient management platform",
   "Enterprise SaaS Solutions": "Customizable enterprise software solutions",
   "Customized Cloud Solutions": "Tailored cloud infrastructure and services",
-  "Blockchain Document Vault": "Secure document storage with blockchain verification",
-  "AI-Powered Sales Assistant": "Intelligent sales automation and lead generation",
+  // "Blockchain Document Vault": "Secure document storage with blockchain verification",
+  // "AI-Powered Sales Assistant": "Intelligent sales automation and lead generation",
   "Compliance Buddy Plugin": "Seamless compliance integration for existing systems",
   "Zoho CRM Integration Plugin": "Enhanced Zoho CRM with compliance features",
   "SyncBridge for Zoho": "Compliance monitoring for Freshworks suite",
-  "Eduwallets: AI & Blockchain-Powered Fee Management": "AI-powered fee management and payment processing",
+  // "Eduwallets: AI & Blockchain-Powered Fee Management": "AI-powered fee management and payment processing",
   "UNIPASS: Automated Student Gate Pass Management System": "Automated gate pass management system for universities",
 };
 
@@ -128,7 +128,7 @@ const ProductPage = () => {
       bgColor: "bg-blue-500/5",
       borderColor: "border-blue-500/20",
       icon: "🔗",
-      products: ["DocChain", "Halal Blockchain"]
+      products: ["DocChain"]
     },
     {
       id: "ai",
@@ -150,7 +150,7 @@ const ProductPage = () => {
       bgColor: "bg-cyan-500/5",
       borderColor: "border-cyan-500/20",
       icon: "☁️",
-      products: ["Eduwallets: AI & Blockchain-Powered Fee Management", "UNIPASS: Automated Student Gate Pass Management System"]
+      products: ["UNIPASS: Automated Student Gate Pass Management System"]
     },
     {
       id: "plugins",
@@ -162,11 +162,9 @@ const ProductPage = () => {
       borderColor: "border-amber-500/20",
       icon: "🔌",
       products: [
-        "Blockchain Document Vault",
-        "AI-Powered Sales Assistant",
+        "Compliance Buddy",
         "CareSync",
         "SyncBridge for Zoho",
-        "Compliance Buddy",
       ]
     }
   ];

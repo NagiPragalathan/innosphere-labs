@@ -240,66 +240,6 @@ Let's co-create a cloud application that drives growth, efficiency, and customer
 📞 Schedule a Free Consultation`
     },
     {
-      id: 4,
-      title: "UI/UX Design",
-      description: "Create intuitive, engaging, and beautiful user experiences that delight your customers and drive conversion.",
-      icon: "🎨",
-      color: "from-yellow-400 to-orange-600",
-      readme: `# UI & UX Design Services
-
-## Overview
-We are the go-to partner for startups and enterprises seeking innovative, human-centered UI/UX solutions.
-
-### Our Unique Approach
-- Hybrid Model: Combine subscription plans + project-based work
-- Proprietary Tools: AI-driven heatmaps, user behavior analytics, and Figma/Adobe XD plugins
-- White-Label Partnerships
-
-## Services Portfolio
-
-### Core Offerings
-
-#### 1. UI/UX Design
-- Wireframing & Prototyping
-- Responsive Web & Mobile App Design
-- Design Systems & Style Guides
-
-#### 2. User Research & Testing
-- User Persona Development
-- A/B Testing & Usability Audits
-
-#### 3. Specialized Solutions
-- SaaS Dashboard Design
-- E-commerce UX Optimization
-- AR/VR Interface Design
-
-#### 4. Growth Add-Ons
-- Subscription Plans: "Design-as-a-Service" (DaaS) for ongoing support
-- Workshops & Training: UX best practices for client teams
-
-## Comprehensive Design Services
-
-### Brand & Identity
-- Graphic Design: Brand identity, marketing materials, and print design
-- Motion Graphics: Animated visuals for advertisements and digital platforms
-- Infographic Design & Illustration: Visual representations of data and concepts
-- Brand Identity Design: Logo creation, style guides, and brand strategy
-- Print, Merchandise & Packaging Design: Designs for physical products and packaging
-
-### Digital Products
-- UI/UX Design: User interface and experience design for web and mobile applications
-- App UI/UX Design: Specialized design services for mobile applications
-- Website Design: Creation and redesign of responsive and user-friendly websites
-- Landing Page Design: Designing high-conversion landing pages
-- PowerPoint Design: Crafting visually appealing and effective presentations
-
-### Industry Solutions
-- SaaS Product Design: Design solutions tailored for Software-as-a-Service products
-- Amazon Design: Product listing images and storefront designs for Amazon sellers
-- Startup Design: Branding and design services tailored for startups
-- Software Design: User-centric design for software interfaces`
-    },
-    {
       id: 5,
       title: "Strategic Consulting",
       description: "Navigate your digital journey with strategic guidance to modernize processes, systems, and organizational culture through AI transformation.",
@@ -334,65 +274,6 @@ Post-deployment, we establish a robust monitoring framework to track performance
 ## Ready to Transform Your Business?
 For further details or to discuss a project, contact us today.`
     },
-    {
-      id: 6,
-      title: "Staff Augmentation",
-      description: "Drive Growth with On-Demand Talent - Enhance your team with skilled professionals who seamlessly integrate with your existing workforce to accelerate project delivery.",
-      icon: "👥",
-      color: "from-cyan-400 to-blue-600",
-      readme: `# InnoSphere Labs' Staff Augmentation Services
-
-## Overview
-Businesses need rapid innovation and efficient operations. Innosphere Labs' Staff Augmentation Services provide skilled professionals who integrate seamlessly into your teams, boosting productivity and accelerating growth.
-
-## Why Choose Staff Augmentation?
-This flexible, cost-effective solution lets you onboard top-tier talent without long-term hiring commitments. Benefits include:
-- Access to specialized tech talent for your projects
-- Scalable teams to match business demands
-- Full control over project management and workflows
-- Seamless integration with existing processes
-
-## Why Augment Your Teams with InnoSphere Labs?
-
-### Tailored Engagement Models
-We offer tailored engagement models to fit your needs:
-- Staff Augmentation – Add skilled developers to your team
-- Dedicated Teams – A team fully dedicated to your project
-- Software Outsourcing – Let us handle development while you focus on strategy
-
-### Flexible Scaling to Meet Your Needs
-- Adapt your team size as required – scale up or down effortlessly
-- Seamless team integration – Our experts align with your workflow
-- Choose your management model – Handle the team yourself or let us lead
-
-## Key Business Benefits
-
-### Access to Elite Talent
-- We provide experts in AI, blockchain, cloud, data analytics, and cybersecurity
-
-### Cost-Efficient & Scalable
-- Reduce hiring costs and operational overhead while maintaining high-quality development
-
-### Faster Time-to-Market
-- Pre-vetted professionals integrate quickly, speeding up project execution
-
-### Seamless Integration
-- Our professionals align with your company culture and technology stack
-
-### Risk Mitigation & Continuity
-- Reduce hiring risks, ensure project stability, and maintain workforce flexibility
-
-## Why Businesses Trust Innosphere Labs
-- Stringent Vetting Process – We select top-tier talent with both technical and soft skills
-- End-to-End Support – From hiring to execution, we ensure seamless service
-- Industry-Specific Expertise – Experience across Healthcare, BFSI, supply chain, manufacturing, Retail, IT, Education and more
-- Results-Driven Approach – We don't just fill gaps; we deliver measurable business outcomes
-
-## Partner with Innosphere Labs Today
-Looking for top tech talent, a dedicated team, or a full-scale project solution?
-
-📩 Contact us today and scale your business with the right talent!`
-    }
 ];
 
 export default services;

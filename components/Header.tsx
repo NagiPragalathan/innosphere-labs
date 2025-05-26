@@ -126,9 +126,9 @@ const Header = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md"
+            className="md:hidden fixed top-[88px] left-0 right-0 min-h-screen bg-[#000000] bg-opacity-95"
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: '100vh' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
@@ -142,7 +142,7 @@ const Header = () => {
                 >
                   <Link 
                     href={item.href}
-                    className="text-gray-300 hover:text-white transition-colors block py-2"
+                    className="text-white hover:text-gray-300 transition-colors block py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
