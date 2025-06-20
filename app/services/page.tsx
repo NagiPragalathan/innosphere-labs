@@ -653,11 +653,11 @@ export default function Services() {
                 {/* Service Stats */}
                 <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
                   <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-cyan-400">20+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-cyan-400">10+</div>
                     <div className="text-sm text-gray-400">Services Offered</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold text-purple-400">500+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-purple-400">100+</div>
                     <div className="text-sm text-gray-400">Projects Completed</div>
                   </div>
                   <div className="text-center hidden sm:block">

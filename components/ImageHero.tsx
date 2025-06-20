@@ -280,9 +280,9 @@ const ImageHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="!text-[14px] !font-bold px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
-                Where Innovation Meets Collective Genius
-              </span>
+              <p className="!text-[30px] !font-bold px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
+                <span className="text-white">An</span> <span className="text-cyan-500">AAYULVRIDH</span> <span className="text-purple-500">Initiative</span>
+              </p>
             </motion.div>
             
             <h1 
@@ -361,12 +361,12 @@ const ImageHero = () => {
               <div className="absolute -inset-1"></div>
               <div className="illustration-holder relative">
                 <img 
-                  src="https://eduwallets.com/images/assets/ils_13.svg" 
+                  src="/images/ils_13.svg" 
                   alt="Main Illustration" 
                   className="main-illustration w-full h-auto z-10"
                 />
                 <img 
-                  src="https://eduwallets.com/images/assets/ils_13_1.svg" 
+                  src="/images/ils_13_1.svg" 
                   alt="Shape One" 
                   className="shapes shape-one absolute"
                   style={{

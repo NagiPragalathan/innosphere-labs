@@ -145,7 +145,7 @@ const IndustrySection = ({
               <div className="hidden lg:block p-4 bg-gray-900/40 backdrop-blur-sm rounded-lg border border-gray-800">
                 <div className="grid grid-cols-3 gap-4">
                   <DigitalCounter number="99%" label="EFFICIENCY" />
-                  <DigitalCounter number="247+" label="CLIENTS" />
+                  <DigitalCounter number="10+" label="PARTNERS" />
                   <DigitalCounter number="24/7" label="SUPPORT" />
                 </div>
               </div>
@@ -388,7 +388,7 @@ const TechHero = () => {
             
             <div className="bg-gray-900/70 backdrop-blur-md border border-gray-800 rounded-lg p-4">
               <div className="text-xs text-gray-500 mb-1 uppercase tracking-wider">Clients</div>
-              <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">500+</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">50+</div>
             </div>
           </motion.div>
           
