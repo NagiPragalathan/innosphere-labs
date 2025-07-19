@@ -9,6 +9,8 @@ import ScrollIndicator from "@/components/ScrollIndicator";
 import Link from "next/link";
 import services from "./details/documents";
 import ReactMarkdown from 'react-markdown';
+import Image from "next/image";
+
 
 // Animation variants for sections
 const sectionVariants = {
@@ -675,23 +677,48 @@ export default function Services() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="relative w-full aspect-square max-w-lg mx-auto">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="relative z-10 grid grid-cols-2 gap-4">
-                    {[...Array(4)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
-                        className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300"
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center mb-4">
-                          {/* Add different icons for each box */}
-                        </div>
-                        <div className="h-2 w-20 bg-gray-700/50 rounded-full mb-2"></div>
-                        <div className="h-2 w-16 bg-gray-700/50 rounded-full"></div>
-                      </motion.div>
-                    ))}
+                  {/* Main hero image */}
+                  <motion.div
+                    className="absolute inset-0 z-10"
+                    initial={{ scale: 0.9, rotate: -2 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                  >
+                    <Image 
+                      src="/images/services_hero.png" 
+                      alt="3D abstract shape" 
+                      className="w-full h-full object-contain rounded-xl shadow-2xl shadow-purple-500/20"
+                      width={1000}
+                      height={1000}
+                    />
+                  </motion.div>
+                  
+                  {/* Background decorative elements */}
+                  <div className="absolute inset-0 -z-10">
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-tr from-purple-500/30 to-cyan-500/30 rounded-full blur-[100px]"
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1.5, ease: "easeOut" }}
+                    ></motion.div>
+                  </div>
+                  
+                  {/* Animated accent rings */}
+                  <div className="absolute -inset-4 z-0">
+                    <motion.div
+                      className="w-full h-full border-2 border-purple-500/20 rounded-xl"
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                    ></motion.div>
+                  </div>
+                  <div className="absolute -inset-8 z-0">
+                    <motion.div
+                      className="w-full h-full border-2 border-cyan-500/20 rounded-xl"
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1, delay: 0.7 }}
+                    ></motion.div>
                   </div>
                 </div>
               </motion.div>
@@ -761,7 +788,7 @@ export default function Services() {
                   {/* Content */}
                   <div className="relative p-8 h-full flex flex-col z-20">
                     <div className="mb-4">
-                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-3xl bg-gradient-to-br ${service.color} shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${service.color} shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
                         {service.icon}
                       </div>
                     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Header from "@/components/Header";
@@ -87,7 +88,9 @@ const IndustrySection = ({
   impact = "",
   gradient = "from-cyan-400 to-purple-600",
   bgGradient = "from-gray-900/40 to-black/40",
-  icon = "🔷",
+  icon = <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+  </svg>,
   index = 1
 }: {
   title: string;
@@ -97,7 +100,7 @@ const IndustrySection = ({
   impact?: string;
   gradient?: string;
   bgGradient?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   index?: number;
 }) => {
   const ref = useRef(null);
@@ -596,41 +599,69 @@ const TechCTA = () => (
           
           {/* Right image/graphic section */}
           <div className="relative hidden lg:block">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-cyan-500/10"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/5 via-pink-500/5 to-orange-500/5"></div>
             
-            {/* Abstract tech graphic */}
+            {/* Modern geometric pattern */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-64 h-64">
-                <div className="absolute inset-0 border-2 border-dashed border-cyan-500/30 rounded-full animate-[spin_60s_linear_infinite]"></div>
-                <div className="absolute inset-4 border-2 border-dashed border-purple-500/30 rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
-                <div className="absolute inset-8 border-2 border-dashed border-blue-500/30 rounded-full animate-[spin_30s_linear_infinite]"></div>
+              <div className="relative w-96 h-96">
+                {/* Hexagonal grid pattern */}
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute inset-0 border-2 border-indigo-500/20"
+                    style={{
+                      clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+                      transform: `rotate(${i * 60}deg) scale(${0.8 + i * 0.1})`,
+                      animation: `pulse ${3 + i}s ease-in-out infinite alternate`
+                    }}
+                  ></div>
+                ))}
+
+                {/* Central element */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl">
-                    ✨
+                  <div className="relative w-24 h-24">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600 to-pink-500 rounded-xl transform rotate-45 animate-pulse"></div>
+                    <div className="absolute inset-0 flex items-center justify-center text-white">
+                      {/* Innovation/Tech Icon */}
+                      <svg
+                        className="w-12 h-12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-                
-                {/* Orbiting elements */}
-                {[0, 1, 2, 3].map((i) => (
-                  <div 
+
+                {/* Floating particles */}
+                {[...Array(8)].map((_, i) => (
+                  <div
                     key={i}
-                    className="absolute w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500"
+                    className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-pink-500 to-indigo-500"
                     style={{
-                      top: '50%',
-                      left: '50%',
-                      transform: `rotate(${i * 90}deg) translateX(120px) rotate(-${i * 90}deg)`,
-                      animation: `orbit ${10 + i * 5}s linear infinite`
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animation: `float ${5 + i * 2}s ease-in-out infinite alternate`,
+                      opacity: 0.6
                     }}
                   ></div>
                 ))}
               </div>
             </div>
-            
-            {/* Code snippets in background */}
-            <div className="absolute bottom-8 right-8 text-[10px] text-cyan-500/40 font-mono">
-              <div>{"function transform(industry) {"}</div>
-              <div>{"  return innovate(industry);"}</div>
-              <div>{"}"}</div>
+
+            {/* Modern code snippet */}
+            <div className="absolute bottom-8 right-8 p-4 bg-black/5 rounded-xl backdrop-blur-sm">
+              <div className="text-xs font-mono space-y-1">
+                <div className="text-pink-500/70">{"async function innovateIndustry() {"}</div>
+                <div className="text-indigo-500/70">{"  const future = await transform();"}</div>
+                <div className="text-pink-500/70">{"  return future.optimize();"}</div>
+                <div className="text-indigo-500/70">{"}"}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -701,26 +732,11 @@ export default function IndustryPage() {
           description="At InnoSphere Labs (ISLABS), we are revolutionizing healthcare IT with AI-driven automation, blockchain security, and next-gen interoperability solutions. Our expertise extends across hospitals, diagnostic labs, and healthcare providers, ensuring efficiency, compliance, and patient-centric innovations."
           features={[]}
           gradient="from-cyan-400 to-blue-600"
-          icon="🏥"
+          icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>}
           index={1}
         />
-
-        {/* LIS Section */}
-        {/* <IndustrySection
-          title="Laboratory Information System (LIS)"
-          subtitle="AI & Blockchain-Powered Lab Management"
-          features={[
-            "AI-Powered Lab Workflow Automation",
-            "Blockchain-Powered Data Security & Compliance",
-            "Interoperability & Seamless Integrations",
-            "AI-Powered Diagnostic Insights & Predictive Analytics",
-            "HIPAA, GDPR, and CAP (College of American Pathologists) standards."
-          ]}
-          gradient="from-blue-400 to-cyan-600"
-          bgGradient="from-cyan-900/20 to-black/50"
-          icon="🧪"
-          index={2}
-        /> */}
 
         {/* CareSync Section */}
         <IndustrySection
@@ -733,7 +749,9 @@ export default function IndustryPage() {
           ]}
           gradient="from-cyan-500 to-teal-600"
           bgGradient="from-teal-900/20 to-black/50"
-          icon="👩‍⚕️"
+          icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>}
           index={2}
         />
 
@@ -748,7 +766,9 @@ export default function IndustryPage() {
           ]}
           gradient="from-teal-400 to-blue-600"
           bgGradient="from-blue-900/20 to-black/50"
-          icon="📄"
+          icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>}
           index={3}
         />
 
@@ -766,46 +786,12 @@ export default function IndustryPage() {
           impact="Streamlined administration, improved student engagement, and enhanced security of academic credentials."
           gradient="from-purple-400 to-indigo-600"
           bgGradient="from-indigo-900/20 to-black/50"
-          icon="🎓"
+          icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>}
           index={4}
         />
 
-        {/* Supply Chain Section */}
-        {/* <IndustrySection
-          title="Supply Chain & Logistics"
-          subtitle="Intelligent, Blockchain-Powered Supply Chain Optimization"
-          description="ISLABS enables real-time tracking, smart contracts, and AI-powered analytics to optimize supply chain operations:"
-          features={[
-            "AI & IoT-Driven Predictive Logistics & Demand Forecasting",
-            "Blockchain-Powered Supply Chain Traceability",
-            "Smart Procurement & Vendor Risk Assessment (ProcureSense)",
-            "Real-Time Shipment Tracking & Condition Monitoring"
-          ]}
-          impact="Enhanced visibility, fraud prevention, and operational cost reduction."
-          gradient="from-green-400 to-cyan-600"
-          bgGradient="from-green-900/20 to-black/50"
-          icon="🚚"
-          index={6}
-        /> */}
-
-        {/* Retail Section */}
-        {/* <IndustrySection
-          title="Retail & E-commerce"
-          subtitle="Personalized, AI-Powered Retail Transformation"
-          description="We help retailers and e-commerce businesses deliver personalized shopping experiences, fraud prevention, and AI-driven insights:"
-          features={[
-            "AI-Powered Customer Behavior Analysis & Personalized Recommendations",
-            "AI Chatbots & Conversational AI for Customer Engagement",
-            "Blockchain-Based Digital Receipts & Fraud Prevention",
-            "AI-Driven Demand Forecasting & Inventory Optimization"
-          ]}
-          impact="Increased sales, enhanced customer engagement, and streamlined inventory management."
-          gradient="from-pink-400 to-purple-600"
-          bgGradient="from-purple-900/20 to-black/50"
-          icon="🛍️"
-          index={7}
-        /> */}
-        
         {/* CTA Section */}
         <TechCTA />
       </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const ProcessStep = ({ number, title, description }: {
   number: number;
@@ -84,44 +85,9 @@ const WhyUsSection = () => {
           <div className="relative">
             {/* Simple dashboard mockup without animations */}
             <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-xl p-1">
-              <div className="bg-black rounded-lg p-4 overflow-hidden">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  </div>
-                  <div className="h-4 w-16 sm:w-24 bg-gray-800 rounded"></div>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="h-16 sm:h-24 bg-gray-800 rounded-lg flex items-center justify-center">
-                    <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-80"></div>
-                  </div>
-                  <div className="h-16 sm:h-24 bg-gray-800 rounded-lg p-3">
-                    <div className="h-2 sm:h-3 w-3/4 bg-gray-700 rounded mb-2"></div>
-                    <div className="h-2 sm:h-3 w-1/2 bg-gray-700 rounded mb-2"></div>
-                    <div className="h-2 sm:h-3 w-5/6 bg-gray-700 rounded"></div>
-                  </div>
-                </div>
-                
-                <div className="h-24 sm:h-32 bg-gray-800 rounded-lg p-4">
-                  <div className="flex justify-between mb-2">
-                    <div className="h-2 sm:h-3 w-16 sm:w-20 bg-gray-700 rounded"></div>
-                    <div className="h-2 sm:h-3 w-16 sm:w-20 bg-gray-700 rounded"></div>
-                  </div>
-                  <div className="h-12 sm:h-16 flex items-end space-x-1 sm:space-x-2">
-                    <div className="w-1/6 bg-cyan-500/70 rounded-t h-3 sm:h-4"></div>
-                    <div className="w-1/6 bg-cyan-500/70 rounded-t h-6 sm:h-8"></div>
-                    <div className="w-1/6 bg-cyan-500/70 rounded-t h-9 sm:h-12"></div>
-                    <div className="w-1/6 bg-purple-500/70 rounded-t h-5 sm:h-6"></div>
-                    <div className="w-1/6 bg-purple-500/70 rounded-t h-8 sm:h-10"></div>
-                    <div className="w-1/6 bg-purple-500/70 rounded-t h-10 sm:h-14"></div>
-                  </div>
-                </div>
-              </div>
               
               {/* Static glow effect */}
+              <Image src="/images/hero_why_inno.png" alt="Dashboard" width={1000} height={1000} />
               <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl blur opacity-30"></div>
             </div>
           </div>

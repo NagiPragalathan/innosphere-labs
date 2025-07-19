@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import productDocs from "./documentation/documents";
 import type { Components } from 'react-markdown';
 import type { ReactNode } from 'react';
+import Image from "next/image";
 
 // Product icons
 // Short descriptions for each product
@@ -122,45 +123,53 @@ const ProductPage = () => {
     {
       id: "blockchain",
       title: "Blockchain Solutions",
-      description: "Secure, transparent, and immutable blockchain technologies",
-      color: "from-blue-500 to-cyan-400",
-      textColor: "text-blue-500",
-      bgColor: "bg-blue-500/5",
-      borderColor: "border-blue-500/20",
-      icon: "🔗",
+      description: "Secure and transparent blockchain applications",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+      </svg>,
+      color: "from-purple-400 to-indigo-600",
+      textColor: "text-purple-500",
+      bgColor: "bg-purple-500/5",
+      borderColor: "border-purple-500/20",
       products: ["DocChain"]
     },
     {
       id: "ai",
-      title: "AI-Driven Solutions",
-      description: "Intelligent systems powered by advanced AI algorithms",
-      color: "from-purple-600 to-pink-500",
-      textColor: "text-purple-500",
-      bgColor: "bg-purple-500/5",
-      borderColor: "border-purple-500/20",
-      icon: "🧠",
+      title: "AI & Machine Learning",
+      description: "Intelligent solutions powered by AI",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>,
+      color: "from-blue-400 to-cyan-600",
+      textColor: "text-blue-500",
+      bgColor: "bg-blue-500/5",
+      borderColor: "border-blue-500/20",
       products: ["ProcureSense", "AI-QGEN"]
     },
     {
       id: "cloud",
-      title: "Cloud & SaaS Platforms - with AI & Blockchain",
-      description: "Scalable cloud infrastructure and software solutions",
-      color: "from-cyan-500 to-emerald-500",
+      title: "Cloud Solutions",
+      description: "Scalable cloud infrastructure and services",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>,
+      color: "from-cyan-400 to-blue-600",
       textColor: "text-cyan-500",
       bgColor: "bg-cyan-500/5",
       borderColor: "border-cyan-500/20",
-      icon: "☁️",
       products: ["UNIPASS: Automated Student Gate Pass Management System"]
     },
     {
-      id: "plugins",
-      title: "Plugins",
-      description: "Seamless integrations for your existing systems",
-      color: "from-amber-500 to-orange-500",
-      textColor: "text-amber-500",
-      bgColor: "bg-amber-500/5",
-      borderColor: "border-amber-500/20",
-      icon: "🔌",
+      id: "integration",
+      title: "Integration Services",
+      description: "Seamless system integration solutions",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+      </svg>,
+      color: "from-green-400 to-teal-600",
+      textColor: "text-green-500",
+      bgColor: "bg-green-500/5",
+      borderColor: "border-green-500/20",
       products: [
         "Compliance Buddy",
         "CareSync",
@@ -278,69 +287,118 @@ const ProductPage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="relative w-full aspect-square max-w-lg mx-auto">
-                {/* Main hero image */}
+                {/* Animated background grid */}
+                <div className="absolute inset-0 -z-10">
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+                </div>
+
+                {/* Floating geometric shapes */}
                 <motion.div
-                  className="absolute inset-0 z-10"
-                  initial={{ scale: 0.9, rotate: -2 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-purple-500/20 to-transparent rounded-3xl z-0"
+                  animate={{ 
+                    rotate: [0, 360],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{ 
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+
+                <motion.div
+                  className="absolute -bottom-12 -right-8 w-32 h-32 bg-gradient-to-tl from-cyan-500/20 to-transparent rounded-full z-0"
+                  animate={{ 
+                    rotate: [360, 0],
+                    scale: [1, 1.2, 1],
+                  }}
+                  transition={{ 
+                    duration: 25,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+
+                {/* Main image container with glass effect */}
+                <motion.div
+                  className="relative z-10 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-1 backdrop-blur-sm border border-white/10"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                  <img 
-                    src="https://static.wixstatic.com/media/443bd0_2508df8b98f34574b03f5ed547029cb2~mv2.png/v1/fill/w_596,h_576,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/443bd0_2508df8b98f34574b03f5ed547029cb2~mv2.png" 
-                    alt="3D abstract shape" 
-                    className={`w-full h-full object-contain transition-opacity duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                    onLoad={() => setHeroImageLoaded(true)}
-                  />
-                </motion.div>
-                
-                {/* Background decorative elements for the image */}
-                <div className="absolute -top-10 -right-10 w-full h-full -z-0">
+                  {/* Glowing border effect */}
+                  <div className="absolute -inset-[2px] bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 rounded-2xl z-[-1] opacity-30 group-hover:opacity-50 blur-[2px] transition-opacity"></div>
+
+                  {/* Main image */}
                   <motion.div
-                    className="w-full h-full"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.6 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="relative rounded-xl overflow-hidden"
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                   >
-                    <img 
-                      src="https://jnsr.in/media/49ff06fc6d74e589887f95a09bd98d72.png" 
-                      alt="Abstract background" 
-                      className="w-full h-full object-contain mix-blend-screen"
+                    <Image 
+                      src="/images/products_hero.jpg" 
+                      alt="3D abstract shape" 
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                      width={1000}
+                      height={1000}
+                      onLoad={() => setHeroImageLoaded(true)}
                     />
+
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-transparent to-cyan-500/10"></div>
                   </motion.div>
+                </motion.div>
+
+                {/* Decorative dots */}
+                <div className="absolute -right-4 top-1/4 flex flex-col gap-2">
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="w-2 h-2 rounded-full bg-cyan-500"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.5 + (i * 0.1) }}
+                    />
+                  ))}
                 </div>
-                
-                {/* Animated glow effect */}
-                <div className="absolute inset-0 -z-1">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-[60px]"></div>
+
+                <div className="absolute -left-4 bottom-1/4 flex flex-col gap-2">
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="w-2 h-2 rounded-full bg-purple-500"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.7 + (i * 0.1) }}
+                    />
+                  ))}
                 </div>
-                
-                {/* Floating elements */}
-                <motion.div 
-                  className="absolute -top-8 -left-8 w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl z-20 opacity-80"
-                  animate={{ 
-                    y: [0, -15, 0],
-                    rotate: [0, 5, 0]
-                  }}
-                  transition={{ 
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                
-                <motion.div 
-                  className="absolute -bottom-5 right-10 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full z-20 opacity-80"
-                  animate={{ 
-                    y: [0, 15, 0],
-                    rotate: [0, -5, 0]
-                  }}
-                  transition={{ 
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                />
+
+                {/* Tech circuit lines */}
+                <svg className="absolute -right-8 top-1/3 w-16 h-32 text-cyan-500/30" viewBox="0 0 100 200">
+                  <motion.path
+                    d="M 10 10 L 90 10 L 90 90 L 10 90"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.5, delay: 1 }}
+                  />
+                </svg>
+
+                <svg className="absolute -left-8 bottom-1/3 w-16 h-32 text-purple-500/30" viewBox="0 0 100 200">
+                  <motion.path
+                    d="M 90 190 L 10 190 L 10 110 L 90 110"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.5, delay: 1.2 }}
+                  />
+                </svg>
               </div>
             </motion.div>
           </div>
@@ -458,7 +516,12 @@ const ProductPage = () => {
                 </div>
                 
                 <div className="relative z-10 flex items-center px-4 space-x-4">
-                  <div className="text-2xl bg-white/10 p-1.5 rounded-lg backdrop-blur-sm shadow-xl">📄</div>
+                    {/* Document icon */}
+                    <div className="text-2xl bg-white/10 p-1.5 rounded-lg backdrop-blur-sm shadow-xl">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
                   <div>
                     <h2 className="text-lg font-bold text-white">
                       {selectedProduct}

@@ -4,7 +4,9 @@ const services = [
       id: 1,
       title: "AI & Generative AI Solutions",
       description: "Harness the power of artificial intelligence to automate processes, gain insights, and create innovative solutions for your business challenges.",
-      icon: "🤖",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>,
       color: "from-blue-400 to-indigo-600",
       readme: `# InnoSphere Labs: Redefining Generative AI Development
   
@@ -74,7 +76,9 @@ At InnosphereLabs, our development process is both strategic and agile, ensuring
       id: 2,
       title: "Blockchain Development",
       description: "Build secure, transparent, and decentralized applications with our expert blockchain development services.",
-      icon: "🔗",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+      </svg>,
       color: "from-green-400 to-teal-600",
       readme: `# Innoshper Labs: Cutting-Edge Blockchain Solutions for Enterprises
   
@@ -150,7 +154,9 @@ Partner with Innoshper Labs today to unlock new possibilities with blockchain te
       id: 3,
       title: "Cloud Application Development",
       description: "Design and develop custom cloud-native applications that accelerate growth, slash costs, and keep you ahead of competitors.",
-      icon: "☁️",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>,
       color: "from-blue-400 to-cyan-600",
       readme: `# Accelerate Innovation with Expert Cloud Application Development
   
@@ -243,7 +249,9 @@ Let's co-create a cloud application that drives growth, efficiency, and customer
       id: 5,
       title: "Strategic Consulting",
       description: "Navigate your digital journey with strategic guidance to modernize processes, systems, and organizational culture through AI transformation.",
-      icon: "📈",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>,
       color: "from-red-400 to-pink-600",
       readme: `# Strategic Consulting: Empowering Your AI Transformation
 
