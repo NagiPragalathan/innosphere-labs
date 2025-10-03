@@ -77,17 +77,6 @@ const Header = () => {
                 filter: `drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))`
               }}
             />
-            <Image 
-              src="/images/aayulvridh.png" 
-              alt="InnoSphere Logo" 
-              fill
-              priority
-              className="object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] brightness-125 relative !top-[-10px] !left-[215px] !h-[138%]"
-              sizes="(max-width: 768px) 150px, 200px"
-              style={{
-                filter: `drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))`
-              }}
-            />
           </div>
         </Link>
         
@@ -105,7 +94,7 @@ const Header = () => {
           ))}
           
           <Link 
-            href="/contact"
+            href="#contact"
             className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-5 py-2 rounded-full hover:opacity-90 transition-opacity"
           >
             Get Started

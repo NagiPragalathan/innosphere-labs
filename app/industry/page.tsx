@@ -79,7 +79,7 @@ const TechPattern = () => (
   </div>
 );
 
-// Updated industry section with less code styling but some tech elements
+// Updated industry section with image support and modern layout
 const IndustrySection = ({ 
   title, 
   subtitle, 
@@ -91,7 +91,9 @@ const IndustrySection = ({
   icon = <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
   </svg>,
-  index = 1
+  index = 1,
+  imageSrc,
+  imageAlt = "Industry image"
 }: {
   title: string;
   subtitle: string;
@@ -102,6 +104,8 @@ const IndustrySection = ({
   bgGradient?: string;
   icon?: React.ReactNode;
   index?: number;
+  imageSrc?: string;
+  imageAlt?: string;
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -117,77 +121,47 @@ const IndustrySection = ({
       {/* Tech-themed background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/30 to-black"></div>
       <TechPattern />
-      
-      {/* Subtle gradient borders */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-cyan-500/40 via-purple-500/40 to-cyan-500/40"></div>
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-purple-500/40 via-cyan-500/40 to-purple-500/40"></div>
-      
-      {/* Grid lines */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-      
-      {/* Simple section indicator */}
       <div className="absolute left-4 lg:left-8 top-4 lg:top-8 font-sans text-xs lg:text-sm px-3 py-1 bg-gray-900/80 border-l-2 border-cyan-500 rounded-r-md">
         <span className={`bg-gradient-to-r ${gradient} bg-clip-text text-transparent font-medium`}>
           {index.toString().padStart(2, '0')}
         </span>
       </div>
-
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-          {/* Left sidebar with tech elements - improved layout */}
-          <div className="lg:col-span-3 order-2 lg:order-1">
-            <div className="sticky top-24 flex flex-col space-y-8">
-              {/* Icon display */}
-              <div className={`h-16 w-16 rounded-xl bg-gradient-to-br ${gradient} p-0.5 shadow-lg shadow-purple-500/20 hidden lg:block mx-auto`}>
-                <div className="h-full w-full flex items-center justify-center bg-gray-900 rounded-[10px] text-3xl">
-                  {icon}
-                </div>
-              </div>
-              
-              {/* Tech metrics - side by side with proper spacing */}
-              <div className="hidden lg:block p-4 bg-gray-900/40 backdrop-blur-sm rounded-lg border border-gray-800">
-                <div className="grid grid-cols-3 gap-4">
-                  <DigitalCounter number="99%" label="EFFICIENCY" />
-                  <DigitalCounter number="10+" label="PARTNERS" />
-                  <DigitalCounter number="24/7" label="SUPPORT" />
-                </div>
-              </div>
-              
-              {/* Feature highlights - less code-like, more business-oriented */}
-              <div className="bg-gray-900/70 backdrop-blur-md border border-gray-800 rounded-lg p-5 shadow-lg hidden lg:block">
-                <h4 className="text-lg font-medium mb-3 text-white">Key Benefits</h4>
-                <div className="space-y-3 text-gray-300">
-                  <div className="flex items-center">
-                    <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradient} mr-2`}></div>
-                    <span>Enhanced Efficiency</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradient} mr-2`}></div>
-                    <span>Secure Operations</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradient} mr-2`}></div>
-                    <span>Seamless Integration</span>
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          {/* Image section - visually rich, modern */}
+          {imageSrc && (
+            <div className="lg:col-span-5 order-1 lg:order-1 mb-10 lg:mb-0">
+              <div className="relative w-full h-72 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-900">
+                <Image 
+                  src={imageSrc} 
+                  alt={imageAlt} 
+                  fill 
+                  style={{objectFit: 'cover'}}
+                  className="transition-transform duration-500 hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-cyan-500/80 to-purple-600/80 px-3 py-1 rounded-full text-xs font-semibold text-white shadow-lg">
+                  {title}
                 </div>
               </div>
             </div>
-          </div>
-          
-          {/* Main content area */}
-          <div className="lg:col-span-9 order-1 lg:order-2">
+          )}
+          {/* Content area */}
+          <div className={imageSrc ? "lg:col-span-7 order-2 lg:order-2" : "lg:col-span-9 order-1 lg:order-2"}>
             <div className="relative">
               {/* Decorative tech elements */}
               <div className="absolute -left-16 top-1/4 w-40 h-40 bg-cyan-500/10 rounded-full filter blur-3xl hidden lg:block"></div>
               <div className="absolute -right-16 bottom-1/4 w-40 h-40 bg-purple-500/10 rounded-full filter blur-3xl hidden lg:block"></div>
-              
               {/* Title area with digital design elements */}
               <div className="relative mb-12">
                 <div className="flex flex-wrap items-center mb-3">
                   <div className={`h-10 w-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center lg:hidden mr-3`}>
                     <span className="text-xl">{icon}</span>
                   </div>
-                  
                   <div className="flex-1">
                     <motion.h2 
                       className="text-3xl sm:text-4xl font-bold"
@@ -200,8 +174,6 @@ const IndustrySection = ({
                       </span>
                     </motion.h2>
                   </div>
-                  
-                  {/* Mobile tech metrics - improved spacing */}
                   <div className="w-full mt-6 lg:hidden">
                     <div className="grid grid-cols-3 gap-3">
                       <DigitalCounter number="99%" label="EFFICIENCY" />
@@ -210,7 +182,6 @@ const IndustrySection = ({
                     </div>
                   </div>
                 </div>
-                
                 <motion.h3 
                   className="text-xl sm:text-2xl text-gray-100 font-medium mb-6"
                   initial={{ opacity: 0, x: -20 }}
@@ -219,15 +190,11 @@ const IndustrySection = ({
                 >
                   {subtitle}
                 </motion.h3>
-                
-                {/* Simple underline */}
                 <div className="flex items-center space-x-2 mb-8">
                   <div className={`h-0.5 w-16 bg-gradient-to-r ${gradient}`}></div>
                   <div className="h-px flex-1 bg-gray-800"></div>
                 </div>
               </div>
-              
-              {/* Description with tech styling */}
               {description && (
                 <motion.div 
                   className="mb-12 relative"
@@ -241,8 +208,6 @@ const IndustrySection = ({
                   </p>
                 </motion.div>
               )}
-              
-              {/* Features list - simplified styling */}
               <motion.div 
                 className="space-y-6 mb-12"
                 variants={containerVariants}
@@ -263,14 +228,10 @@ const IndustrySection = ({
                     }}
                   >
                     <div className="absolute -left-2 -top-2 -bottom-2 -right-2 bg-gradient-to-r from-gray-900 to-black rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
                     <div className="flex items-start relative z-10 group-hover:translate-y-0.5 transition-transform duration-300">
-                      {/* Feature bullet - simplified */}
                       <div className={`flex-shrink-0 w-8 h-8 rounded-md mr-4 bg-gradient-to-br ${gradient} flex items-center justify-center text-white font-medium`}>
                         {i + 1}
                       </div>
-                      
-                      {/* Feature content */}
                       <div className="flex-1 pt-1">
                         <p className="text-lg text-gray-200 group-hover:text-white transition-colors duration-300">
                           {feature}
@@ -280,8 +241,6 @@ const IndustrySection = ({
                   </motion.div>
                 ))}
               </motion.div>
-              
-              {/* Impact section - simplified styling */}
               {impact && (
                 <motion.div 
                   className="relative mt-12 overflow-hidden"
@@ -724,7 +683,6 @@ export default function IndustryPage() {
       
       <main className="overflow-x-hidden">
         <TechHero />
-        
         {/* Healthcare Section */}
         <IndustrySection
           title="Healthcare Industry"
@@ -736,25 +694,9 @@ export default function IndustryPage() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
           </svg>}
           index={1}
+          imageSrc="/images/industry_start.png"
+          imageAlt="Healthcare industry"
         />
-
-        {/* CareSync Section */}
-        <IndustrySection
-          title="CareSync"
-          subtitle="AI-Driven Nurse Acuity & Scheduling"
-          features={[
-            "AI-powered shift scheduling based on patient acuity & nurse skill levels.",
-            "Predictive workload balancing to reduce burnout & improve patient care.",
-            "Real-time integration with HIS, EMR, and Payroll systems via FHIR & HL7 APIs."
-          ]}
-          gradient="from-cyan-500 to-teal-600"
-          bgGradient="from-teal-900/20 to-black/50"
-          icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>}
-          index={2}
-        />
-
         {/* DocChain Section */}
         <IndustrySection
           title="AI-Powered Medical Document Management (DocChain)"
@@ -769,9 +711,10 @@ export default function IndustryPage() {
           icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>}
-          index={3}
+          index={2}
+          imageSrc="/images/products_hero.jpg"
+          imageAlt="Medical document management"
         />
-
         {/* Education Section */}
         <IndustrySection
           title="Education"
@@ -789,9 +732,10 @@ export default function IndustryPage() {
           icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>}
-          index={4}
+          index={3}
+          imageSrc="/images/hero_why_inno.png"
+          imageAlt="Education industry"
         />
-
         {/* CTA Section */}
         <TechCTA />
       </main>

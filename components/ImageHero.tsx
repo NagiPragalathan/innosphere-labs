@@ -280,8 +280,8 @@ const ImageHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="!text-[30px] !font-bold px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
-                <span className="text-white">An</span> <span className="text-cyan-500">AAYULVRIDH</span> <span className="text-purple-500">Initiative</span>
+              <p className="!text-[18px] mb-[-25px] !font-bold px-4 py-1 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm rounded-full text-sm font-medium border border-cyan-500/20">
+                <span className="text-white">Where Innovation Meets</span> <span className="text-cyan-500">Collective</span> <span className="text-purple-500">Genius</span>
               </p>
             </motion.div>
             
