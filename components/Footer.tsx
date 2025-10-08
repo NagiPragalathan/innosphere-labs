@@ -23,11 +23,7 @@ const Footer = () => {
             </div>
             
             <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6">
-                INNOSPHERELABS<br/>
-                Headquarters<br/>
-                No. 21B, 5th Cross Street, South Phase<br/>
-                Guindy Industrial Estate, Guindy<br/>
-                Chennai – 600032, Tamil Nadu, India
+                No. 21B, 5th Cross Street, South Phase, Guindy Industrial Estate, Guindy, Chennai – 600032, Tamil Nadu, India
             </p>
             
             <div className="flex space-x-3 sm:space-x-4">
