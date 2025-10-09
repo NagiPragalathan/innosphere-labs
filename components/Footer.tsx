@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
             
             <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6">
-                No. 21B, 5th Cross Street, South Phase, Guindy Industrial Estate, Guindy, Chennai – 600032, Tamil Nadu, India
+            1st Floor Plot No 12C/1, 3rd Cross Street, South Phase, Industrial Estate, Guindy, Chennai – 600032.
             </p>
             
             <div className="flex space-x-3 sm:space-x-4">
